@@ -20,7 +20,7 @@ class CreateReguPesertasTable extends Migration
             $table->string('nama_sekolah');
             $table->string('nama_anggota_regu');
             $table->string('nama_official_regu');
-            $table->int('status_penilaian');
+            $table->integer('status_penilaian');
             $table->timestamps();
         });
     }
