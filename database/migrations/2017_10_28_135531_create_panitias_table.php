@@ -13,8 +13,10 @@ class CreatePanitiasTable extends Migration
      */
     public function up()
     {
-        Schema::create('panitias', function (Blueprint $table) {
+        Schema::create('panitia', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('username');
+            $table->string('nama_panitia');
             $table->timestamps();
         });
     }

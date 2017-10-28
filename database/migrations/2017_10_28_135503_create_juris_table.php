@@ -13,8 +13,10 @@ class CreateJurisTable extends Migration
      */
     public function up()
     {
-        Schema::create('juris', function (Blueprint $table) {
+        Schema::create('juri', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('username');
+            $table->string('nama_juri');
             $table->timestamps();
         });
     }
