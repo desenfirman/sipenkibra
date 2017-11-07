@@ -28,6 +28,6 @@ class CreateNilaisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nilais');
+        Schema::dropIfExists('nilai');
     }
 }
