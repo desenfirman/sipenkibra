@@ -12,4 +12,10 @@ class Panitia extends Model
     {
         $this->belongsTo('App\User');
     }
+
+    public function ambilDataPanitia($id_panitia)
+    {
+
+    }
+
 }

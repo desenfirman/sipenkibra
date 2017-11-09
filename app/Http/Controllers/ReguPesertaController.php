@@ -11,4 +11,31 @@ class ReguPesertaController extends Controller
         $this->middleware('auth');
         $this->middleware('regu_peserta');
     }
+
+    //Implementasi lihat dashboard
+    public function index()
+    {
+
+    }
+
+    public function lihatRekapNilai()
+    {
+
+    }
+
+    public function lihatRekapNilaiSemuaRegu()
+    {
+
+    }
+
+    public function unduhRekapNilai()
+    {
+
+    }
+
+    public function lihatPemberitahuan()
+    {
+
+    }
+
 }
