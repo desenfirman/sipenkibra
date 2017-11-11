@@ -20,27 +20,17 @@ class ReguPeserta extends Model
 
     public function ambilbiodataReguPeserta($no_regu)
     {
-
     }
 
     public function ambilStatusKonfirmasiSemuaReguPeserta()
     {
-
     }
 
     public function tambahRegu($data_regu)
     {
-
     }
 
     public function setConfirmationStatus($no_regu, $statusKonfirmasi)
     {
-
     }
-
-
-
-
-
-
 }

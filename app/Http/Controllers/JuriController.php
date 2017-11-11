@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class JuriController extends Controller
 {
 
-    function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
         $this->middleware('juri');
@@ -16,21 +16,17 @@ class JuriController extends Controller
     //Implementasi lihat dashboard
     public function index()
     {
-
     }
 
     public function tampilkanFormPenilaian($no_regu, $id_juri)
     {
-
     }
 
     public function updateNilai($aspek_penilaian, $nilai)
     {
-
     }
 
     public function submitNilai()
     {
-
     }
 }

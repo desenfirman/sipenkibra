@@ -15,13 +15,9 @@ class Juri extends Model
 
     public function ambilDataJuri($id_juri)
     {
-
     }
 
     public function tambahJuri($data_juri)
     {
-
     }
-
-
 }

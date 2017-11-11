@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class PanitiaController extends Controller
 {
-    function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
         $this->middleware('panitia');
@@ -16,22 +16,17 @@ class PanitiaController extends Controller
     //Implementasi Lihat Dashboard
     public function index()
     {
-
     }
 
     public function tambahRegu(Request $request)
     {
-
     }
 
     public function konfirmasi($no_regu)
     {
-
     }
 
     public function tambahJuri(Request $request)
     {
-
     }
-
 }
