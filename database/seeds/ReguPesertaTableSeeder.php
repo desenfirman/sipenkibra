@@ -22,7 +22,7 @@ class ReguPesertaTableSeeder extends Seeder
             $nama_regu = $faker->cityPrefix;
             $nama_sekolah = "SMAN " . $faker->numberBetween($min = 1, $max = 10) . " " . $faker->state ;
             $nama_anggota_regu = "";
-            foreach (range(1, 15) as $index){
+            foreach (range(1, 15) as $index) {
                 $nama_anggota_regu += $faker->name . " \n";
             }
             $nama_official_regu = $faker->name;

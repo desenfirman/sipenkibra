@@ -15,9 +15,26 @@ class Juri extends Model
 
     public function ambilDataJuri($id_juri)
     {
+        $juris = Juri::all();
+        return $juris;
     }
 
-    public function tambahJuri($data_juri)
+    public function tambahJuri(Request $data_juri)
     {
+        $username = $data_juri->input('username');
+        $nama_juri = $data_juri->input('name');
+        $password = bcrypt($data_juri->input('password'));
+
+        $user = new User([
+            'username' => $username,
+            'password' => $password
+        ]);
+        $user->save();
+
+        $juri = new Juri();
+        $juri->username = $username;
+        $juri->nama_juri = $nama_juri;
+        $juri->user()->associate($user);
+        $juri->save();
     }
 }

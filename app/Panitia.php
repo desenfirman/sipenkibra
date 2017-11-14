@@ -15,5 +15,7 @@ class Panitia extends Model
 
     public function ambilDataPanitia($id_panitia)
     {
+        $panitias = Panitia::all();
+        return $panitias;
     }
 }
