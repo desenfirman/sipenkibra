@@ -22,27 +22,26 @@ class ReguPesertaTableSeeder extends Seeder
             $nama_regu = $faker->cityPrefix;
             $nama_sekolah = "SMAN " . $faker->numberBetween($min = 1, $max = 10) . " " . $faker->state ;
             $nama_anggota_regu = "";
-            foreach (range(1, 15)){
+            foreach (range(1, 15) as $index){
                 $nama_anggota_regu += $faker->name . " \n";
             }
             $nama_official_regu = $faker->name;
 
             $user = new User([
                 'username' => $username,
-                'password' => bcrypt('secret');
+                'password' => bcrypt('secret')
             ]);
             $user->save();
 
-            $reguPeserta = new ReguPeserta([
-                'username' => $username,
-                'nama_regu' => $nama_regu,
-                'nama_sekolah' => $nama_sekolah,
-                'nama_anggota_regu' => $nama_anggota_regu,
-                'nama_official_regu' => $nama_official_regu,
-                'status_konfirmasi' => 0
-            ]);
-            $reguPeserta->user()->associate($user);
-            $reguPeserta->save();
+            $regu_peserta = new ReguPeserta();
+            $regu_peserta->username = $username;
+            $regu_peserta->nama_regu = $nama_regu;
+            $regu_peserta->nama_sekolah = $nama_sekolah;
+            $regu_peserta->nama_anggota_regu = $nama_anggota_regu;
+            $regu_peserta->nama_official_regu = $nama_official_regu;
+            $regu_peserta->status_konfirmasi = 0;
+            $regu_peserta->user()->associate($user);
+            $regu_peserta->save();
         }
     }
 }

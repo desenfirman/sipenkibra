@@ -22,14 +22,13 @@ class PanitiaTableSeeder extends Seeder
 
         $user = new User([
             'username' => $username,
-            'password' => bcrypt('secret');
+            'password' => bcrypt('secret')
         ]);
         $user->save();
 
-        $panitia = new Panitia([
-            'username' => $username,
-            'nama_panitia' => $nama_panitia
-        ]);
+        $panitia = new Panitia();
+        $panitia->username = $username;
+        $panitia->nama_panitia = $nama_panitia;
         $panitia->user()->associate($user);
         $panitia->save();
     }

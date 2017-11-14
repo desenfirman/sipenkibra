@@ -10,7 +10,7 @@ class Panitia extends Model
 
     public function user()
     {
-        $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'id');
     }
 
     public function ambilDataPanitia($id_panitia)

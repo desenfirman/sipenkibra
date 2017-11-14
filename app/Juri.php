@@ -10,7 +10,7 @@ class Juri extends Model
 
     public function user()
     {
-        $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'id');
     }
 
     public function ambilDataJuri($id_juri)
