@@ -46,13 +46,14 @@ class ReguPeserta extends Model
             ]);
         $user->save();
 
-        $regu_peserta = new ReguPeserta();
-        $regu_peserta->username = $username;
-        $regu_peserta->nama_regu = $nama_regu;
-        $regu_peserta->nama_sekolah = $nama_sekolah;
-        $regu_peserta->nama_anggota_regu = $nama_anggota_regu;
-        $regu_peserta->nama_official_regu = $nama_official_regu;
-        $regu_peserta->status_konfirmasi = 0;
+        $regu_peserta = new ReguPeserta([
+            'username' => $username,
+            'nama_regu' => $nama_regu,
+            'nama_sekolah' => $nama_sekolah,
+            'nama_anggota_regu' => $nama_anggota_regu,
+            'nama_official_regu' => $nama_official_regu,
+            'status_konfirmasi' => 0
+        ]);
         $regu_peserta->user()->associate($user);
         $regu_peserta->save();
     }

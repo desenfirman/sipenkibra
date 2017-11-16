@@ -2,7 +2,7 @@
 
 use App\User;
 use App\Juri;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Eloquent\Database\Model;
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 
@@ -28,9 +28,11 @@ class JuriTableSeeder extends Seeder
             ]);
             $user->save();
 
-            $juri = new Juri();
-            $juri->username = $username;
-            $juri->nama_juri = $nama_juri;
+            $juri = new Juri([
+                'username' => $username,
+                'id_juri' => $index,
+                'nama_juri' => $nama_juri
+            ]);
             $juri->user()->associate($user);
             $juri->save();
         }

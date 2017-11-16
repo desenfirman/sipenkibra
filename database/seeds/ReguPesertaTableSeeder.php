@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use App\Nilai;
 use App\ReguPeserta;
 use Illuminate\Database\Eloquent\Model;
 use Faker\Factory as Faker;
@@ -35,16 +36,27 @@ class ReguPesertaTableSeeder extends Seeder
             ]);
             $user->save();
 
-            $regu_peserta = new ReguPeserta();
-            $regu_peserta->username = $username;
-            $regu_peserta->no_regu = $no_regu;
-            $regu_peserta->nama_regu = $nama_regu;
-            $regu_peserta->nama_sekolah = $nama_sekolah;
-            $regu_peserta->nama_anggota_regu = $nama_anggota_regu;
-            $regu_peserta->nama_official_regu = $nama_official_regu;
-            $regu_peserta->status_konfirmasi = 0;
+            $regu_peserta = new ReguPeserta([
+                'username' => $username,
+                'no_regu' => $no_regu,
+                'nama_regu' => $nama_regu,
+                'nama_sekolah' => $nama_sekolah,
+                'nama_anggota_regu' => $nama_anggota_regu,
+                'nama_official_regu' => $nama_official_regu,
+                'status_konfirmasi' => 0
+            ]);
             $regu_peserta->user()->associate($user);
             $regu_peserta->save();
+
+            foreach (App\Juri::get() as $juri) {
+                $nilai = new Nilai([
+                    'no_regu' => $no_regu,
+                    'id_juri' => $juri->id_juri
+                ]);
+                $nilai->juri()->associate($juri->id_juri);
+                $nilai->regupeserta()->associate($no_regu);
+                $nilai->save();
+            }
         }
     }
 }

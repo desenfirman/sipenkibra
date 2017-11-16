@@ -31,9 +31,10 @@ class Juri extends Model
         ]);
         $user->save();
 
-        $juri = new Juri();
-        $juri->username = $username;
-        $juri->nama_juri = $nama_juri;
+        $juri = new Juri([
+            'username' => $username,
+            'nama_juri' => $nama_juri
+        ]);
         $juri->user()->associate($user);
         $juri->save();
     }

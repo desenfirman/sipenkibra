@@ -17,6 +17,7 @@ class CreateNilaisTable extends Migration
             $table->increments('id');
             $table->integer('no_regu');
             $table->integer('id_juri');
+            $table->integer('status_penilaian')->default(0);
             $table->timestamps();
         });
     }
