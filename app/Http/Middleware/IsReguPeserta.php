@@ -15,6 +15,9 @@ class IsReguPeserta
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if (Auth::user() &&  Auth::user()->role == 2) {
+            return $next($request);
+        }
+        return redirect('/');
     }
 }

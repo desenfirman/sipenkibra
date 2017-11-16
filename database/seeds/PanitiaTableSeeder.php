@@ -16,13 +16,14 @@ class PanitiaTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-           // Create dummy panitia data table
+        // Create dummy panitia data table
         $username = $faker->username;
         $nama_panitia = $faker->name;
 
         $user = new User([
             'username' => $username,
-            'password' => bcrypt('secret')
+            'password' => bcrypt('secret'),
+            'role' => 0
         ]);
         $user->save();
 

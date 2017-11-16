@@ -23,6 +23,7 @@ class JuriTableSeeder extends Seeder
 
             $user = new User([
                 'username' => $username,
+                'role' => 1,
                 'password' => bcrypt('secret')
             ]);
             $user->save();

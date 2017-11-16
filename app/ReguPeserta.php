@@ -13,25 +13,25 @@ class ReguPeserta extends Model
         return $this->belongsTo('App\User', 'id');
     }
 
-    public function ambilDataNomorUrutSemuaReguPeserta()
+    public static function ambilDataNomorUrutSemuaReguPeserta()
     {
-        $regu_pesertas = ReguPeserta::all()->only(['id']);
+        $regu_pesertas = ReguPeserta::get(array('id'));
         return $regu_pesertas;
     }
 
-    public function ambilbiodataReguPeserta($no_regu)
+    public static function ambilbiodataReguPeserta($no_regu)
     {
-        $regu_pesertas = ReguPeserta::all()->except(['status_konfirmasi']);
+        $regu_peserta = ReguPeserta::findOrFail($no_regu);
+        return $regu_peserta;
+    }
+
+    public static function ambilStatusKonfirmasiSemuaReguPeserta()
+    {
+        $regu_pesertas = ReguPeserta::get(array('id', 'status_konfirmasi'));
         return $regu_pesertas;
     }
 
-    public function ambilStatusKonfirmasiSemuaReguPeserta()
-    {
-        $regu_pesertas = ReguPeserta::all()->only(['id', 'status_konfirmasi']);
-        return $regu_pesertas;
-    }
-
-    public function tambahRegu(Request $data_regu)
+    public static function tambahRegu(Request $data_regu)
     {
         $username = $data_regu->input('username');
         $password = $data_regu->input('password');

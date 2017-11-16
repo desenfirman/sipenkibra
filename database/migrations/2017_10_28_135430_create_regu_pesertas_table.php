@@ -15,6 +15,7 @@ class CreateReguPesertasTable extends Migration
     {
         Schema::create('regu_peserta', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('no_regu');
             $table->string('username')->unique();
             $table->string('nama_regu');
             $table->string('nama_sekolah');

@@ -18,8 +18,7 @@ class Nilai extends Model
         return $this->belongsTo('App\ReguPeserta', 'no_regu');
     }
 
-
-    public function ambilDataNilaiPerJuri($no_regu, $id_juri)
+    public static function ambilDataNilaiPerJuri($no_regu, $id_juri)
     {
         $nilai_per_juri = App\Nilai::where([
             'no_regu' => $no_regu,
@@ -34,10 +33,7 @@ class Nilai extends Model
 
     public function setTelahTernilaiOleh($no_regu, $id_juri) //addition
     {
-        $nilai_per_juri = App\Nilai::where([
-            'no_regu' => $no_regu,
-            $id_juri => $id_juri
-        ]);
+        $nilai_per_juri = Nilai::ambilDataNilaiPerJuri($no_regu, $id_juri);
         $nilai_per_juri->status_penilaian = 1;
         $nilai_per_juri->save();
     }

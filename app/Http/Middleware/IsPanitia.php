@@ -15,6 +15,9 @@ class IsPanitia
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if (Auth::user() &&  Auth::user()->role == 0) {
+            return $next($request);
+        }
+        return redirect('/');
     }
 }

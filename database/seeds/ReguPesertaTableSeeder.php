@@ -20,6 +20,7 @@ class ReguPesertaTableSeeder extends Seeder
             // Create dummy regu_peserta data table
             $username = $faker->username;
             $nama_regu = $faker->cityPrefix;
+            $no_regu = $index;
             $nama_sekolah = "SMAN " . $faker->numberBetween($min = 1, $max = 10) . " " . $faker->state ;
             $nama_anggota_regu = "";
             foreach (range(1, 15) as $index) {
@@ -29,12 +30,14 @@ class ReguPesertaTableSeeder extends Seeder
 
             $user = new User([
                 'username' => $username,
-                'password' => bcrypt('secret')
+                'password' => bcrypt('secret'),
+                'role' => 2
             ]);
             $user->save();
 
             $regu_peserta = new ReguPeserta();
             $regu_peserta->username = $username;
+            $regu_peserta->no_regu = $no_regu;
             $regu_peserta->nama_regu = $nama_regu;
             $regu_peserta->nama_sekolah = $nama_sekolah;
             $regu_peserta->nama_anggota_regu = $nama_anggota_regu;
