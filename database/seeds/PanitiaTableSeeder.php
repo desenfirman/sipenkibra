@@ -1,7 +1,7 @@
 <?php
 
-use App\User;
-use App\Panitia;
+use SIPENKIBRA\User;
+use SIPENKIBRA\Panitia;
 use Illuminate\Database\Eloquent\Model;
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;

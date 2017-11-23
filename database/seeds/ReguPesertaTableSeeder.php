@@ -1,8 +1,8 @@
 <?php
 
-use App\User;
-use App\Nilai;
-use App\ReguPeserta;
+use SIPENKIBRA\User;
+use SIPENKIBRA\Nilai;
+use SIPENKIBRA\ReguPeserta;
 use Illuminate\Database\Eloquent\Model;
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
@@ -48,7 +48,7 @@ class ReguPesertaTableSeeder extends Seeder
             $regu_peserta->user()->associate($user);
             $regu_peserta->save();
 
-            foreach (App\Juri::get() as $juri) {
+            foreach (SIPENKIBRA\Juri::get() as $juri) {
                 $nilai = new Nilai([
                     'no_regu' => $no_regu,
                     'id_juri' => $juri->id_juri

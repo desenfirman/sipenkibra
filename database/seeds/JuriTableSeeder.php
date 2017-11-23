@@ -1,7 +1,7 @@
 <?php
 
-use App\User;
-use App\Juri;
+use SIPENKIBRA\User;
+use SIPENKIBRA\Juri;
 use Illuminate\Eloquent\Database\Model;
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
