@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace SIPENKIBRA;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,7 +10,7 @@ class ReguPeserta extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User', 'id');
+        return $this->belongsTo('SIPENKIBRA\User', 'id');
     }
 
     public static function ambilDataNomorUrutSemuaReguPeserta()

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace SIPENKIBRA;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -11,12 +11,12 @@ class Nilai extends Model
 
     public function juri()
     {
-        return $this->belongsTo('App\Juri', 'id_juri');
+        return $this->belongsTo('SIPENKIBRA\Juri', 'id_juri');
     }
 
     public function regupeserta()
     {
-        return $this->belongsTo('App\ReguPeserta', 'no_regu');
+        return $this->belongsTo('SIPENKIBRA\ReguPeserta', 'no_regu');
     }
 
     public static function ambilDataNilaiPerJuri($no_regu, $id_juri)

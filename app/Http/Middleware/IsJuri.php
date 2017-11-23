@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace SIPENKIBRA\Http\Middleware;
 
 use Closure;
 
