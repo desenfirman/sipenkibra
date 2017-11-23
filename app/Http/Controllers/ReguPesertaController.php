@@ -15,6 +15,7 @@ class ReguPesertaController extends Controller
     //Implementasi lihat dashboard
     public function index()
     {
+        dd($this);
     }
 
     public function lihatRekapNilai()

@@ -12,14 +12,39 @@
 */
 
 Route::get('/', function () {
+
     return view('welcome');
 });
 
-Route::get('/login', function ()
-{
-    return view('auth.create');
+Route::get('/login', [
+    'as' => 'login',
+    'uses' => 'Auth\LoginController@showLoginForm'
+]);
+Route::post('/login', 'Auth\LoginController@login');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::group([
+    'middleware' => ['auth', 'regu_peserta']
+], function () {
+    Route::get('/regu_peserta/', 'ReguPesertaController@index');
 });
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group([
+    'middleware' => ['auth', 'juri']
+], function () {
+    Route::get('/juri/', 'JuriController@index');
+});
+
+
+Route::group([
+    'middleware' => ['auth', 'panitia']
+], function () {
+    Route::get('/panitia/', 'PanitiaController@index');
+});
+
+get('protected', ['middleware' => ['auth', 'admin'], function() {
+    return "this page requires that you be logged in and an Admin";
+}]);
+
+//Route::get('/home', 'HomeController@index')->name('home');

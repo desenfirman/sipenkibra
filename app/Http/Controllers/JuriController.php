@@ -16,6 +16,7 @@ class JuriController extends Controller
     //Implementasi lihat dashboard
     public function index()
     {
+        dd($this);
     }
 
     public function tampilkanFormPenilaian($no_regu, $id_juri)

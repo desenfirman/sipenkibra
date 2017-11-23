@@ -23,3 +23,8 @@
 - [ ] Menambahkan regu peserta
 - [ ] Mengkonfirmasi regu peserta
 - [ ] Menambahkan juri
+
+
+### Unexpected addition
+- add rememberToken in user table
+
