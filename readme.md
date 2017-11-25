@@ -24,7 +24,11 @@
 - [ ] Mengkonfirmasi regu peserta
 - [ ] Menambahkan juri
 
-
 ### Unexpected addition
 - add rememberToken in user table
+- add role in user database
 
+### Some to-do-list
+- [ ] should change lihatDashboard() to index() in documentation
+- [ ] should add Auth facades to documentation
+- [ ] should add id_juri, id_peserta, id_panitia in documentation

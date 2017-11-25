@@ -15,7 +15,7 @@ class ReguPesertaController extends Controller
     //Implementasi lihat dashboard
     public function index()
     {
-        dd($this);
+        echo "You are authenticated as Regu Peserta";
     }
 
     public function lihatRekapNilai()

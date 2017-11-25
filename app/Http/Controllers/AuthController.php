@@ -3,82 +3,65 @@
 namespace SIPENKIBRA\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class AuthController extends Controller
 {
+
+    use AuthenticatesUsers;
+    protected $redirectTo = '/';
+
     /**
-     * Display a listing of the resource.
+     * Redirect to specific page if authenticate
      *
-     * @return \Illuminate\Http\Response
+     * @return http redirect
      */
     public function index()
     {
-        //
+        $authenticate_user = Auth::user();
+        if ($authenticate_user == null) {
+            return view('auth.login');
+        }else{
+            if ($authenticate_user->role == 0) {
+                return redirect('/panitia');
+            }
+            if ($authenticate_user->role == 1) {
+                return redirect('/juri');
+            }
+            if ($authenticate_user->role == 2) {
+                return redirect('/regu_peserta');
+            }
+        }
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Login use 'username field instead email'
      *
-     * @return \Illuminate\Http\Response
+     * @return 'username'
      */
-    public function create()
+    public function username()
     {
-        //
+        return 'username';
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function login(Request $request)
     {
-        //
+        $this->validateLogin($request);
+
+        if ($this->attemptLogin($request)) {
+            return $this->sendLoginResponse($request);
+        }
+        return $this->sendFailedLoginResponse($request);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function logout(Request $request)
     {
-        //
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        return redirect('/');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

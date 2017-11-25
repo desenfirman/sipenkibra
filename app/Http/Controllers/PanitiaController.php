@@ -16,7 +16,7 @@ class PanitiaController extends Controller
     //Implementasi Lihat Dashboard
     public function index()
     {
-        dd($this);
+        echo "You are authenticate as Panitia";
     }
 
     public function tambahRegu(Request $request)

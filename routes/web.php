@@ -11,40 +11,21 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', 'AuthController@index')->name('login');
+Route::post('/', 'AuthController@login')->name('login');
+Route::get('/logout', 'AuthController@logout')->name('logout');
 
-    return view('welcome');
+// Route list for regu_peserta
+Route::group(['middleware' => ['auth', 'regu_peserta']], function () {
+    Route::get('/regu_peserta', 'ReguPesertaController@index');
 });
 
-Route::get('/login', [
-    'as' => 'login',
-    'uses' => 'Auth\LoginController@showLoginForm'
-]);
-Route::post('/login', 'Auth\LoginController@login');
-Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
-
-Route::group([
-    'middleware' => ['auth', 'regu_peserta']
-], function () {
-    Route::get('/regu_peserta/', 'ReguPesertaController@index');
+// Route list for juri
+Route::group(['middleware' => ['auth', 'juri']], function () {
+    Route::get('/juri', 'JuriController@index');
 });
 
-
-Route::group([
-    'middleware' => ['auth', 'juri']
-], function () {
-    Route::get('/juri/', 'JuriController@index');
+//Route list for panitia
+Route::group(['middleware' => ['auth', 'panitia']], function () {
+    Route::get('/panitia', 'PanitiaController@index');
 });
-
-
-Route::group([
-    'middleware' => ['auth', 'panitia']
-], function () {
-    Route::get('/panitia/', 'PanitiaController@index');
-});
-
-get('protected', ['middleware' => ['auth', 'admin'], function() {
-    return "this page requires that you be logged in and an Admin";
-}]);
-
-//Route::get('/home', 'HomeController@index')->name('home');
