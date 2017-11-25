@@ -1,6 +1,6 @@
-#<p align="center">SIPENKIBRA</p>
+#SIPENKIBRA
 
-<p align="center"><img src="https://travis-ci.org/desenfirman/sipenkibra.svg?branch=master"> <img src="https://travis-ci.org/desenfirman/sipenkibra.svg?branch=development"></p>
+<p align="center">Master branch: <img src="https://travis-ci.org/desenfirman/sipenkibra.svg?branch=master">Development branch: <img src="https://travis-ci.org/desenfirman/sipenkibra.svg?branch=development"></p>
 
 ## How to Install
 ### Requirement
@@ -54,8 +54,7 @@ $ php artisan serve
 - [ ] Mengkonfirmasi regu peserta
 - [ ] Menambahkan juri
 
-## Some to-do-list
-    Should do
+## Some to-do-list (should-do's)
 - [ ]  change lihatDashboard() to index() in documentation
 - [ ]  add Auth facades to documentation
 - [ ]  add id_juri, id_peserta, id_panitia in documentation
