@@ -67,7 +67,19 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => SIPENKIBRA\User::class,
+        ],
+        'regu_peserta' => [
+            'driver' => 'eloquent',
+            'model' => SIPENKIBRA\ReguPeserta::class,
+        ],
+        'juri' => [
+            'driver' => 'eloquent',
+            'model' => SIPENKIBRA\Juri::class,
+        ],
+        'panitia' => [
+            'driver' => 'eloquent',
+            'model' => SIPENKIBRA\Panitia::class,
         ],
 
         // 'users' => [

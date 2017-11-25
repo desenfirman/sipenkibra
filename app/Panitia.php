@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace SIPENKIBRA;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,10 +10,12 @@ class Panitia extends Model
 
     public function user()
     {
-        $this->belongsTo('App\User');
+        return $this->belongsTo('SIPENKIBRA\User', 'id');
     }
 
     public function ambilDataPanitia($id_panitia)
     {
+        $panitias = Panitia::all();
+        return $panitias;
     }
 }

@@ -10,7 +10,7 @@ before_script:
   - composer self-update
   - composer install --dev --prefer-source --no-interaction
   - php artisan key:generate
-  - php artisan migrate
+  - php artisan migrate:refresh --seed
 
 before_install:
   - mysql -e "create database IF NOT EXISTS test;" -uroot

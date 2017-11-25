@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace SIPENKIBRA\Http\Controllers;
 
 use Illuminate\Http\Request;
 
@@ -15,6 +15,7 @@ class ReguPesertaController extends Controller
     //Implementasi lihat dashboard
     public function index()
     {
+        echo "You are authenticated as Regu Peserta";
     }
 
     public function lihatRekapNilai()

@@ -11,11 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'AuthController@index')->name('login');
+Route::post('/', 'AuthController@login')->name('login');
+Route::get('/logout', 'AuthController@logout')->name('logout');
+
+// Route list for regu_peserta
+Route::group(['middleware' => ['auth', 'regu_peserta']], function () {
+    Route::get('/regu_peserta', 'ReguPesertaController@index');
 });
 
-Route::get('/login', function ()
-{
-    return view('auth.create');
+// Route list for juri
+Route::group(['middleware' => ['auth', 'juri']], function () {
+    Route::get('/juri', 'JuriController@index');
+});
+
+//Route list for panitia
+Route::group(['middleware' => ['auth', 'panitia']], function () {
+    Route::get('/panitia', 'PanitiaController@index');
 });

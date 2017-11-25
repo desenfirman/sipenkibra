@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace SIPENKIBRA\Http\Controllers;
 
 use Illuminate\Http\Request;
 
@@ -16,6 +16,7 @@ class PanitiaController extends Controller
     //Implementasi Lihat Dashboard
     public function index()
     {
+        echo "You are authenticate as Panitia";
     }
 
     public function tambahRegu(Request $request)

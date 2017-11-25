@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace SIPENKIBRA\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class IsPanitia
 {
@@ -15,6 +16,9 @@ class IsPanitia
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if (Auth::user() &&  Auth::user()->role == 0) {
+            return $next($request);
+        }
+        return redirect('/');
     }
 }
