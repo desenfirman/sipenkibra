@@ -8,7 +8,6 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class AuthController extends Controller
 {
-
     use AuthenticatesUsers;
     protected $redirectTo = '/';
 
@@ -21,8 +20,8 @@ class AuthController extends Controller
     {
         $authenticate_user = Auth::user();
         if ($authenticate_user == null) {
-            return view('auth.login');
-        }else{
+            return view('auth.login_page');
+        } else {
             if ($authenticate_user->role == 0) {
                 return redirect('/panitia');
             }
@@ -63,5 +62,4 @@ class AuthController extends Controller
 
         return redirect('/');
     }
-
 }

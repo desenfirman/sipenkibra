@@ -22,8 +22,6 @@ class Nilai extends Model
     public static function ambilDataNilaiPerJuri($no_regu, $id_juri)
     {
         $nilai_gerakan_ditempat = Nilai::select([
-            'no_regu',
-            'id_juri',
             'istirahat_ditempat',
             'sikap_sempurna',
             'periksa_kerapian',
@@ -43,8 +41,6 @@ class Nilai extends Model
         ])->whereRaw('no_regu LIKE ? and id_juri LIKE ?', [$no_regu, $id_juri])->get();
 
         $nilai_gerakan_berpindah_tempat = Nilai::select([
-            'no_regu',
-            'id_juri',
             'empat_langkah_kekanan',
             'empat_langkah_kebelakang',
             'empat_langkah_kekiri',
@@ -52,16 +48,12 @@ class Nilai extends Model
         ])->whereRaw('no_regu LIKE ? and id_juri LIKE ?', [$no_regu, $id_juri])->get();
 
         $nilai_gerakan_berjalan_berhenti = Nilai::select([
-            'no_regu',
-            'id_juri',
             'langkah_tegap',
             'langkah_bias',
             'lari_maju'
         ])->whereRaw('no_regu LIKE ? and id_juri LIKE ?', [$no_regu, $id_juri])->get();
 
         $nilai_gerakan_berjalan_ke_berjalan = Nilai::select([
-            'no_regu',
-            'id_juri',
             'langkah_bias_kelangkah_tegap',
             'langkah_tegap_kehormat_kanan',
             'langkah_tegap_kelangkah_biasa',
@@ -75,14 +67,10 @@ class Nilai extends Model
         ])->whereRaw('no_regu LIKE ? and id_juri LIKE ?', [$no_regu, $id_juri])->get();
 
         $gerakan_tambahan = Nilai::select([
-            'no_regu',
-            'id_juri',
             'bubar_kumpul_barisan'
         ])->whereRaw('no_regu LIKE ? and id_juri LIKE ?', [$no_regu, $id_juri])->get();
 
         $best_pasukan = Nilai::select([
-            'no_regu',
-            'id_juri',
             'kerapian_saff_dan_banjar',
             'keseragaman',
             'kekompakan',
@@ -95,8 +83,6 @@ class Nilai extends Model
         ])->whereRaw('no_regu LIKE ? and id_juri LIKE ?', [$no_regu, $id_juri])->get();
 
         $best_variasi_dan_formasi = Nilai::select([
-            'no_regu',
-            'id_juri',
             'keindaan',
             'kerumitan',
             'tingkat_kreatifitas',
@@ -105,8 +91,6 @@ class Nilai extends Model
         ])->whereRaw('no_regu LIKE ? and id_juri LIKE ?', [$no_regu, $id_juri])->get();
 
         $best_danton = Nilai::select([
-            'no_regu',
-            'id_juri',
             'sikap',
             'ketegasan_aba_aba',
             'kelantangan_aba_aba',
@@ -145,9 +129,19 @@ class Nilai extends Model
 
     public static function setTelahTernilaiOleh($no_regu, $id_juri) //addition
     {
-        $nilai;
-        $nilai->status_penilaian = 1;
-        $nilai->save();
+        DB::beginTransaction();
+        $status = 1; //0 = success, 1 = failed
+        try {
+            $nilai = Nilai::where('no_regu', $no_regu)
+                      ->where('id_juri', $id_juri)
+                      ->update(['status_penilaian' => 1]);
+            DB::commit();
+            $status = 0;
+        } catch (\Exception $e) {
+            DB::rollback();
+        } finally {
+            return $status;
+        }
     }
 
     public static function ambilRekapNilai($no_regu)
@@ -157,7 +151,7 @@ class Nilai extends Model
 
     public static function ambilRekapNilaiSemuaRegu()
     {
-        return Nilai::ambilRekapNilai('%');
+        return Nilai::ambilDataNilaiPerJuri('%', '%');
     }
 
     public static function ambilStatusNilaiReguPeserta($no_regu)
