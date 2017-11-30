@@ -1,6 +1,7 @@
 # SIPENKIBRA
 
-<p align="center">Master branch: <img src="https://travis-ci.org/desenfirman/sipenkibra.svg?branch=master">Development branch: <img src="https://travis-ci.org/desenfirman/sipenkibra.svg?branch=development"></p>
+<p align="center">Master branch: <img src="https://travis-ci.org/desenfirman/sipenkibra.svg?branch=master"></p>
+<p align="center">Development branch: <img src="https://travis-ci.org/desenfirman/sipenkibra.svg?branch=development"></p>
 
 ## How to Install
 ### Requirement
@@ -34,25 +35,26 @@ $ php artisan serve
 
 ## Fungsionalitas SIPENKIBRA
 ### Pengguna Terdaftar
-- [ ] Login
-- [ ] Logout
+- [X] Login
+- [X] Logout
 ### Juri
-- [ ] Melihat dashboard juri
-- [ ] Membuka form penilaian
-- [ ] Memilih nilai
-- [ ] Submit nilai
+- [X] Melihat dashboard juri
+- [X] Membuka form penilaian
+- [X] Memilih nilai
+- [X] Submit nilai
 ### Regu Terdaftar
 - [ ] Melihat dashboard regu peserta
-- [ ] Melihat rekap nilai
-- [ ] Melihat pemberitahuan
+- [X] Melihat rekap nilai
+- [ ] ~~Melihat pemberitahuan~~
 - [ ] Melihat peringkat
 - [ ] Melihat rekap nilai seluruh regu peserta
-- [ ] Mengunduh rekap nilai
+- ~~Mengunduh rekap nilai (deleted)~~
 ### Panitia
-- [ ] Melihat dashboard panitia
+- [X] Melihat dashboard panitia
 - [ ] Menambahkan regu peserta
-- [ ] Mengkonfirmasi regu peserta
+- [X] Mengkonfirmasi regu peserta
 - [ ] Menambahkan juri
+- [ ] Meregister Panitia
 
 ## Some to-do-list (should-do's)
 - [ ]  change lihatDashboard() to index() in documentation
@@ -60,6 +62,20 @@ $ php artisan serve
 - [ ]  add id_juri, id_peserta, id_panitia in documentation
 - [ ]  add role in user database
 - [ ]  add rememberToken in user table
+- [ ]  remove id_juri in membuka form penilaian
+- [ ]  add no_regu in updateNilai
+- [ ]  change parameter input in konfirmasi
+
+## Testing Method
+- [ ] Melihat rekap dari regu peserta
+- [ ] Melihat dashboard panitia
+- [ ] Memilih nilai
+
+## Unexpected changes
+- [ ] add lihat nilai seluruh regu peserta in panitia
+
+## Some optimization candidate
+- use only one Auth function
 
 ## Kelompok 1
 ```text
