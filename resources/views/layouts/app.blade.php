@@ -13,9 +13,29 @@
         .container{
             background-color: #ffffff;
         }
+        .color-change-2x {
+            -webkit-animation: color-change-2x 5s linear infinite alternate both;
+                    animation: color-change-2x 5s linear infinite alternate both;
+        }
+        @-webkit-keyframes color-change-2x {
+          0% {
+            background: #19dcea;
+          }
+          100% {
+            background: #b22cff;
+          }
+        }
+        @keyframes color-change-2x {
+          0% {
+            background: #19dcea;
+          }
+          100% {
+            background: #b22cff;
+          }
+        }
     </style>
 </head>
-<body style="background-color: #4286f4;">
+<body class="color-change-2x">
     @include('layouts.nav')
     @yield('content')
     <!-- Scripts -->

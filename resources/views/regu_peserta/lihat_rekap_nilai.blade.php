@@ -23,42 +23,37 @@ function stringProcessing($field_name)
 	            <table class="table table-striped">
 			      	<?php
                       $count_kategori = 0;
-                      ?>
-	              @foreach ($data['rekap_nilai'] as $kategori_key => $rekap_nilai_kategori)
+                     ?>
+	              @foreach ($rekap_nilai as $kategori_key => $rekap_nilai_kategori)
+		              <?php unset($rekap_nilai_kategori['total_kategori']); ?>
 		              <thead class="thead-dark">
 		                <tr>
-									<th>{{chr($count_kategori + 65)}}.</th>
-									<th>{{stringProcessing($kategori_key)}}</th>
-									@foreach($rekap_nilai_kategori as $juri_key => $juri)
-									@if($juri_key === "jumlah")
-										<th>Total Keseluruhan</th>
-										@else
-										<th>Juri {{ ($juri_key + 1) }}</th>
-										@endif
-									@endforeach
-								<?php $count_kategori++; ?>
+		                	<th>{{chr($count_kategori + 65)}}.</th>
+							<th>{{stringProcessing($kategori_key)}}</th>
+							@foreach ((array) $rekap_nilai_kategori as $column_key => $value)
+								<th>{{stringProcessing($column_key)}}</th>
+							@endforeach
 		                </tr>
 		              </thead>
 		              <tbody>
-		              	<?php $count = 0; ?>
-		              	@foreach ($rekap_nilai_kategori[0] as $key => $value)
-							<tr>
-								<td>{{($count + 1)}}</td>
-								<td>{{stringProcessing($key)}}</td>
-								@foreach($rekap_nilai_kategori as $juri_count)
-									<td>{{$juri_count[$key]}}</td>
-								@endforeach
-							</tr>
-							<?php $count++; ?>
-						@endforeach
+		              	<?php $count_kriteria = 0; ?>
+		              	@foreach ((array) $rekap_nilai_kategori[0] as $kriteria_key => $nilai)
+		              	<tr>
+		              		<td>{{++$count_kriteria}}</td>
+		              		<td>{{stringProcessing($kriteria_key)}}</td>
+		              		@foreach ((array) $rekap_nilai_kategori as $column_key => $value)
+							<td>{{$rekap_nilai_kategori[$column_key][$kriteria_key]}}</td>
+							@endforeach
+		              	</tr>
+		              	@endforeach
 		              </tbody>
+		              <?php $count_kategori++; ?>
 	              @endforeach
 	             	<thead class="thead-dark">
-	             		<th>Jumlah</th>
-	             		@foreach($data['rekap_nilai']['nilai_gerakan_ditempat'] as $rekap)
+	             		@foreach($rekap_nilai['nilai_gerakan_ditempat'] as $rekap)
 						<th></th>
 	             		@endforeach
-	             		<th>{{$data['total_nilai']}}</th>
+	             		<th>{{$rekap_nilai['total_nilai']}}</th>
 	             	</thead>
 	         	</table>
 	        </div>

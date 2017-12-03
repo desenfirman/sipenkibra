@@ -1,10 +1,16 @@
 @extends('layouts.app')
 
-
+<?php
+function stringProcessing($field_name)
+{
+    $words = str_replace("_", " ", $field_name);
+    echo ucwords($words);
+}
+?>
 @section('content')
 	<div class = "container">
         <div class = "row">
-          <div class="col-md-offset-2 col-md-8 login-from text-center">
+          <div class="col-md-12 login-from text-center">
           <div style= "display:inline-block;" class="col-md-12 login-from text-center">
     	   <font face="Arial" size="2" color="navy"> <center> PBB FORMASI, VARIASI & YEL-YEL </center></font>
     	   <font face="Arial" size="2" color="navy"> <center> KOMANDO PASKIBRA </center></font>
@@ -14,41 +20,30 @@
           </div>
     	  <br>
           <div class="table-responsive">
-              <div class="table table-stripped">
+              <table class="table table-stripped">
                   <thead class="thead-dark">
+                    @foreach ($rekap_nilais as $no_regu_key => $rekap_nilai)
                       <tr>
-                          <th></th>
+                          <th>No.</th>
+                          @foreach ($rekap_nilais[$no_regu_key] as $header => $value)
+                          <th>{{stringProcessing($header)}}</th>
+                          @endforeach
+                          <?php break; ?>
                       </tr>
+                    @endforeach
                   </thead>
                   <tbody>
-                      <tr>
-                          <th>  </th>
-                      </tr>
+                    @foreach ($rekap_nilais as $no_regu_key => $rekap_nilai)
+                    <tr>
+                        <td>{{$no_regu_key}}</td>
+                        @foreach ($rekap_nilais[$no_regu_key] as $header)
+                        <td>{{$header}}</td>
+                        @endforeach
+                    </tr>
+                    @endforeach
                   </tbody>
-              </div>
+              </table>
           </div>
-
-			<table border="1" width="100%">
-				<tr>
-					<td style="background-color: red; color: white;">NO REGU</td>
-					<td style="background-color: red; color: white;">NAMA SEKOLAH</td>
-					<td style="background-color: red; color: white;">PBB</td>
-					<td style="background-color: red; color: white;">VARIASI dan FORMASI</td>
-					<td style="background-color: red; color: white;">DANTON</td>
-					<td style="background-color: red; color: white;">YEL-YEL</td>
-					<td style="background-color: red; color: white;">PASUKAN</td>
-					<td style="background-color: red; color: white;">TOTAL NILAI PBB</td>
-				</tr>
-				<tr> <td>1</td><td>LOREM</td><td>70</td><td>60</td><td>70</td><td>60</td><td>70</td><td>200</td> </tr>
-				<tr> <td>2</td><td>LOREM</td><td>70</td><td>60</td><td>70</td><td>60</td><td>70</td><td>200</td> </tr>
-				<tr> <td>3</td><td>LOREM</td><td>70</td><td>60</td><td>70</td><td>60</td><td>70</td><td>200</td> </tr>
-				<tr> <td>4</td><td>LOREM</td><td>70</td><td>60</td><td>70</td><td>60</td><td>70</td><td>200</td> </tr>
-				<tr> <td>5</td><td>LOREM</td><td>70</td><td>60</td><td>70</td><td>60</td><td>70</td><td>200</td> </tr>
-				<tr> <td>6</td><td>LOREM</td><td>70</td><td>60</td><td>70</td><td>60</td><td>70</td><td>200</td> </tr>
-				<tr> <td>7</td><td>LOREM</td><td>70</td><td>60</td><td>70</td><td>60</td><td>70</td><td>200</td> </tr>
-				<tr> <td>8</td><td>LOREM</td><td>70</td><td>60</td><td>70</td><td>60</td><td>70</td><td>200</td> </tr>
-				<tr> <td>9</td><td>LOREM</td><td>70</td><td>60</td><td>70</td><td>60</td><td>70</td><td>200</td> </tr>
-				<tr> <td>10</td><td>LOREM</td><td>70</td><td>60</td><td>70</td><td>60</td><td>70</td><td>200</td> </tr>
 		</div>
     </div>
 </div>

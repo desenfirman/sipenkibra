@@ -20,6 +20,7 @@ Route::group(['middleware' => ['auth', 'regu_peserta']], function () {
     Route::get('/regu_peserta', 'ReguPesertaController@index');
     Route::get('/regu_peserta/rekap_nilai', 'ReguPesertaController@lihatRekapNilai');
     Route::get('/regu_peserta/rekap_nilai_semua', 'ReguPesertaController@lihatRekapNilaiSemuaRegu');
+    Route::get('/regu_peserta/lihat_peringkat', 'ReguPesertaController@lihatPeringkat');
 });
 
 // Route list for juri
@@ -33,5 +34,12 @@ Route::group(['middleware' => ['auth', 'juri']], function () {
 //Route list for panitia
 Route::group(['middleware' => ['auth', 'panitia']], function () {
     Route::get('/panitia', 'PanitiaController@index');
+    Route::get('/panitia/tambahregupeserta', function () {
+        return view('panitia.tambah_regu_peserta');
+    });
+    Route::get('/panitia/tambahjuri', function () {
+        return view('panitia.tambah_juri');
+    });
+    Route::post('/panitia/tambahregupeserta', 'PanitiaController@tambahReguPeserta');
     Route::post('/panitia', 'PanitiaController@konfirmasi');
 });

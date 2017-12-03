@@ -31,6 +31,11 @@ class ReguPeserta extends Model
         return $regu_peserta->toArray();
     }
 
+    public static function ambilStatusKonfirmasiReguPeserta($no_regu)
+    {
+        $regu_peserta = ReguPeserta::where('no_regu', $no_regu)->first();
+        return $regu_peserta->status_konfirmasi;
+    }
 
     public static function ambilStatusKonfirmasiSemuaReguPeserta()
     {
@@ -38,31 +43,34 @@ class ReguPeserta extends Model
         return $regu_pesertas->toArray();
     }
 
-    public static function tambahRegu(Request $data_regu)
+    public static function tambahRegu($username, $password, $nama_regu, $nama_sekolah, $nama_sekolah, $nama_anggota_regu, $nama_official_regu)
     {
-        $username = $data_regu->input('username');
-        $password = $data_regu->input('password');
-        $nama_regu = $data_regu->input('nama_regu');
-        $nama_sekolah = $data_regu->input('nama_sekolah');
-        $nama_anggota_regu = $data_regu->input('nama_anggota_regu');
-        $nama_official_regu = $data_regu->input('nama_official_regu');
+        DB::beginTransaction();
+        $status = 1; //0 = success, 1 = failed
+        try {
+            $user = new User([
+                    'username' => $username,
+                    'password' => $password,
+                ]);
+            $user->save();
 
-        $user = new User([
+            $regu_peserta = new ReguPeserta([
                 'username' => $username,
-                'password' => $password,
+                'nama_regu' => $nama_regu,
+                'nama_sekolah' => $nama_sekolah,
+                'nama_anggota_regu' => $nama_anggota_regu,
+                'nama_official_regu' => $nama_official_regu,
+                'status_konfirmasi' => 0
             ]);
-        $user->save();
-
-        $regu_peserta = new ReguPeserta([
-            'username' => $username,
-            'nama_regu' => $nama_regu,
-            'nama_sekolah' => $nama_sekolah,
-            'nama_anggota_regu' => $nama_anggota_regu,
-            'nama_official_regu' => $nama_official_regu,
-            'status_konfirmasi' => 0
-        ]);
-        $regu_peserta->user()->associate($user);
-        $regu_peserta->save();
+            $regu_peserta->user()->associate($user);
+            $regu_peserta->save();
+            DB::commit();
+            $status = 0;
+        } catch (Exception $e) {
+            DB::rollback();
+        } finally {
+            return $status;
+        }
     }
 
     public static function setConfirmationStatus($no_regu, $status_konfirmasi)
