@@ -24,6 +24,12 @@
               <div class="form-group">
                   <label>Password</label>
                   <input type="password" class="form-control" name="password" placeholder="Password" />
+                  @if ($errors->has('password') || $errors->has('email') )
+                      <br>
+                      <div class="alert alert-warning" role="alert">
+                        Login gagal.
+                      </div>
+                  @endif
               </div>
              <div class="text-right">
                   <button type="submit" class="btn btn-primary"><span>Login</span></button>

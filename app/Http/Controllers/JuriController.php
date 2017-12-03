@@ -26,7 +26,7 @@ class JuriController extends Controller
         $nama_juri = $juri_active_session->nama_juri;
 
         $no_urut = ReguPeserta::ambilDataNomorUrutSemuaReguPeserta();
-        $status_konfirmasi = ReguPeserta::ambilStatusKOnfirmasiSemuaReguPeserta();
+        $status_konfirmasi = ReguPeserta::ambilStatusKonfirmasiSemuaReguPeserta();
         $color_code = array();
         $status = array();
         //dd($count_peserta);

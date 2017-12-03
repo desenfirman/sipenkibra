@@ -48,7 +48,7 @@ $ php artisan serve
 - [ ] ~~Melihat pemberitahuan~~
 - [ ] Melihat peringkat
 - [ ] Melihat rekap nilai seluruh regu peserta
-- ~~Mengunduh rekap nilai (deleted)~~
+- [ ] ~~Mengunduh rekap nilai~~
 ### Panitia
 - [X] Melihat dashboard panitia
 - [ ] Menambahkan regu peserta
@@ -65,6 +65,7 @@ $ php artisan serve
 - [ ]  remove id_juri in membuka form penilaian
 - [ ]  add no_regu in updateNilai
 - [ ]  change parameter input in konfirmasi
+- [ ]  ambil data regu in lihat nilai semua regu peserta
 
 ## Testing Method
 - [ ] Melihat rekap dari regu peserta

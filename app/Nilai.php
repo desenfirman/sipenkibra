@@ -109,7 +109,51 @@ class Nilai extends Model
             'best_variasi_dan_formasi' =>  $best_variasi_dan_formasi,
             'best_danton' =>  $best_danton
         ]);
+        //dd($nilai_per_regu);
         return $nilai_per_regu;
+    }
+
+    public static function ambilRekapNilai($no_regu)
+    {
+        $rekap_nilai = Nilai::ambilDataNilaiPerJuri($no_regu, '%')->toArray();
+        $total_nilai = 0;
+        foreach ($rekap_nilai as $key_kategori => $value) {
+            $kategori = $value;
+            //dd($kategori);
+            $total_kategori = 0;
+            $kategori['jumlah'] = array();
+            foreach ($kategori[0] as $kriteria => $value) {
+                $kategori['jumlah'][$kriteria] = 0;
+                for ($i = 0; $i < sizeOf($kategori) - 1; $i++) {
+                    $kategori['jumlah'][$kriteria] += $kategori[$i][$kriteria];
+                }
+                $total_kategori += $kategori['jumlah'][$kriteria];
+                $rekap_nilai[$key_kategori] = $kategori;
+            }
+
+            $total_nilai += $total_kategori;
+            $rekap_nilai[$key_kategori]['total_kategori'] = $total_kategori;
+        }
+        $data = array();
+        foreach ($rekap_nilai as $key => $value) {
+            $data[$key] = $value;
+        }
+        $data['total_nilai'] = $total_nilai;
+        return $data;
+    }
+
+    public static function ambilRekapNilaiSemuaRegu()
+    {
+        $nilai_regu_pesertas = array();
+        $regu_pesertas = ReguPeserta::all();
+
+        foreach ($regu_pesertas as $regu_peserta) {
+            $no_regu = $regu_peserta->no_regu;
+            $rekap_nilai = Nilai::ambilRekapNilai($no_regu);
+            $nilai_regu_pesertas[$no_regu] = $rekap_nilai;
+            unset($nilai_regu_pesertas[$no_regu]['no_regu']);
+        }
+        return $nilai_regu_pesertas;
     }
 
     public static function setNilai($no_regu, $id_juri, $aspek_penilaian, $nilai)
@@ -144,36 +188,40 @@ class Nilai extends Model
         }
     }
 
-    public static function ambilRekapNilai($no_regu)
-    {
-        return Nilai::ambilDataNilaiPerJuri($no_regu, '%');
-    }
-
-    public static function ambilRekapNilaiSemuaRegu()
-    {
-        return Nilai::ambilDataNilaiPerJuri('%', '%');
-    }
-
     public static function ambilStatusNilaiReguPeserta($no_regu)
     {
-        $status_nilai_per_regu = Nilai::ambilRekapNilai($no_regu)->pluck('status_penilaian')->toArray();
-        return $status_nilai_per_regu;
+        $status_nilais = Nilai::where('no_regu', $no_regu)->get()->pluck('status_penilaian');
+        foreach ($status_nilais as $key => $status_nilai) {
+            if ($status_nilai == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static function ambilStatusNilaiSemuaReguPeserta()
     {
-        $status_nilais = Nilai::get()->pluck('status_penilaian')->toArray();
-        return $status_nilais;
+        $status_nilais = Nilai::get()->pluck('status_penilaian');
+        foreach ($status_nilais as $key => $status_nilai) {
+            if ($status_nilai == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
-    public function createEntryNilai($no_regu, $id_juri)
+    public static function createEntryNilai($no_regu, $id_juri)
     {
-        $nilai = new Nilai([
-            'no_regu' => $no_regu,
-            'id_juri' => $id_juri
-        ]);
-        $nilai->juri()->associate($id_juri);
-        $nilai->regupeserta()->associate($no_regu);
-        $nilai->save();
+        DB::transaction();
+        try {
+            $nilai = new Nilai([
+                'no_regu' => $no_regu,
+                'id_juri' => $id_juri
+            ]);
+            $nilai->juri()->associate($id_juri);
+            $nilai->regupeserta()->associate($no_regu);
+            $nilai->save();
+        } catch (Exception $e) {
+        }
     }
 }

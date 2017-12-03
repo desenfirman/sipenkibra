@@ -4,6 +4,8 @@ namespace SIPENKIBRA\Http\Controllers;
 
 use Illuminate\Http\Request;
 use SIPENKIBRA\ReguPeserta;
+use Illuminate\Support\Facades\DB;
+use SIPENKIBRA\Juri;
 
 class PanitiaController extends Controller
 {
@@ -41,8 +43,37 @@ class PanitiaController extends Controller
         return view('panitia.dashboard')->with('data', $data);
     }
 
-    public function tambahRegu(Request $request)
+    public function tambahReguPeserta(Request $request)
     {
+        $username = $request->input('username');
+        $password = $request->input('password');
+        $nama_regu = $request->input('nama_regu');
+        $nama_sekolah = $request->input('nama_sekolah');
+        $nama_anggota_regu = $request->input('nama_anggota_regu');
+        $nama_official_regu = $request->input('nama_official_regu');
+
+        DB::transaction();
+        try {
+            $no_regu = $request->no_regu;
+            $status = 1;
+            $status_tambah_regu = ReguPeserta::tambahRegu($username, $password, $nama_regu, $nama_sekolah, $nama_sekolah, $nama_anggota_regu, $nama_official_regu);
+            $status_tambah_nilai = 1;
+            $juri = Juri::all();
+            foreach ($juri as $key) {
+                $status_tambah_nilai = Nilai::createEntryNilai($no_regu, $juri->id_juri);
+                if ($status_tambah_nilai == 1) {
+                    break;
+                }
+            }
+            if ($status_tambah_regu == 0 && $status_tambah_nilai == 0) {
+                DB::commit();
+                $status = 0;
+            }
+        } catch (Exception $e) {
+            DB::rollback();
+        } finally {
+            return $status;
+        }
     }
 
     public function konfirmasi(Request $request)
