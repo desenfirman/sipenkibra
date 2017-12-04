@@ -12,10 +12,10 @@
       </li>
       @if (Auth::user()->role == 0)
       <li class="nav-item">
-        <a class="nav-link" href="/panitia/tambahregupeserta">Tambah Regu peserta <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/panitia/tambah_regu_peserta">Tambah Regu peserta <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/panitia/tambahjuri">Tambah Juri <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/panitia/tambah_juri">Tambah Juri <span class="sr-only">(current)</span></a>
       </li>
       @endif
       @if (Auth::user()->role == 2)

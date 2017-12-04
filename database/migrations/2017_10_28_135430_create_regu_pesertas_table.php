@@ -21,7 +21,7 @@ class CreateReguPesertasTable extends Migration
             $table->string('nama_sekolah');
             $table->string('nama_anggota_regu');
             $table->string('nama_official_regu');
-            $table->integer('status_konfirmasi');
+            $table->integer('status_konfirmasi')->default(0);
             $table->timestamps();
         });
     }

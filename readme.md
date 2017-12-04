@@ -43,18 +43,25 @@ $ php artisan serve
 - [X] Memilih nilai
 - [X] Submit nilai
 ### Regu Terdaftar
-- [ ] Melihat dashboard regu peserta
+- [X] Melihat dashboard regu peserta
 - [X] Melihat rekap nilai
 - [ ] ~~Melihat pemberitahuan~~
-- [ ] Melihat peringkat
-- [ ] Melihat rekap nilai seluruh regu peserta
+- [X] Melihat peringkat
+- [X] Melihat rekap nilai seluruh regu peserta
 - [ ] ~~Mengunduh rekap nilai~~
 ### Panitia
 - [X] Melihat dashboard panitia
-- [ ] Menambahkan regu peserta
+- [X] Menambahkan regu peserta
 - [X] Mengkonfirmasi regu peserta
-- [ ] Menambahkan juri
-- [ ] Meregister Panitia
+- [X] Menambahkan juri
+- [X] Meregister Panitia
+
+## specification candidate
+- [ ] blok lihat rekap nilai jika belum dinilai
+- [ ] tidak bisa akses form penilaian ketika belum konfirmasi
+- [ ] warna hijau jika telah dinilai
+- [ ] blok lihat peringkat & lihat semua regu peserta ketika semua belum dinilai
+- [ ] add repeat password
 
 ## Some to-do-list (should-do's)
 - [ ]  change lihatDashboard() to index() in documentation

@@ -1,13 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
+<br>
+<br>
+<br>
     <div class="container">
-      <form class="modal-body" method="POST" action="/panitia/tambahregupeserta">
+        <br><br>
+      <center>
+          <h1>Form Tambah Regu Peserta</h1>
+        </center>
+      <form id="tambahregupeserta" class="modal-body" method="POST" action="/panitia/tambah_regu_peserta">
         {{csrf_field()}}
         <div class="login-from">
               <div class="form-group">
                   <label >No. Urut</label>
-                  <input type="number" class="form-control" name="noUrut" placeholder="No Urut" value="0" />
+                  <input type="number" class="form-control" step="any" name="no_regu" placeholder="No Urut" value="0" />
               </div>
               <div class="form-row">
                   <div class="form-group col-md-6">
@@ -21,23 +28,22 @@
               </div>
               <div class="form-group row">
                   <label class="col-sm-4 col-form-label">Nama Sekolah</label>
-                  <div class="col-md-8"><input type="text" class=" form-control" name="namaSekolah" placeholder="Nama sekolah" /></div>
+                  <div class="col-md-8"><input type="text" class="form-control" name="nama_sekolah" placeholder="Nama sekolah" /></div>
               </div>
               <div class="form-group row">
                   <label class="col-sm-4 col-form-label">Nama Regu Peserta</label>
-                  <div class="col-md-8"><input type="text" class=" form-control" name="namaReguPeserta" placeholder="Nama regu peserta" /></div>
+                  <div class="col-md-8"><input type="text" class="form-control" name="nama_regu" placeholder="Nama regu peserta" /></div>
               </div>
               <div class="form-group row">
                   <label class="col-sm-4 col-form-label">Nama Anggota Peserta</label>
-                  <div class="col-md-8"><textarea class="form-control" id="namaAnggotaPeserta" rows="3" placeholder="Nama-nama anggota regu"></textarea></div>
+                  <div class="col-md-8"><textarea class="form-control" name="nama_anggota_regu" rows="3" placeholder="Nama-nama anggota regu" form="tambahregupeserta"></textarea></div>
               </div>
               <div class="form-group row">
                   <label class="col-sm-4 col-form-label">Nama Official Regu</label>
-                  <div class="col-md-8"><input type="text" class=" form-control" name="namaOfficial" placeholder="Nama official regu" /></div>
+                  <div class="col-md-8"><input type="text" class=" form-control" name="nama_official_regu" placeholder="Nama official regu" /></div>
               </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary"><span>Menambahkan Regu Peserta</span></button>
       </div>
     </form>

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 class Nilai extends Model
 {
     protected $table = 'nilai';
+    protected $fillable = array('no_regu', 'id_juri');
 
     public function juri()
     {
@@ -212,9 +213,8 @@ class Nilai extends Model
 
     public static function createEntryNilai($no_regu, $id_juri)
     {
-        DB::transaction();
         try {
-            $nilai = new Nilai([
+            $nilai = new \SIPENKIBRA\Nilai([
                 'no_regu' => $no_regu,
                 'id_juri' => $id_juri
             ]);

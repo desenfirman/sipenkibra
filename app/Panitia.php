@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Panitia extends Model
 {
     protected $table = 'panitia';
+    protected $fillable = array('username', 'nama_panitia', 'id_panitia');
 
     public function user()
     {
@@ -15,7 +16,25 @@ class Panitia extends Model
 
     public function ambilDataPanitia($id_panitia)
     {
-        $panitias = Panitia::all();
-        return $panitias;
+        $panitia = Panitia::where('id_panitia', $id_panitia)->get();
+        return $panitia;
+    }
+
+    public static function tambahPanitia($id_panitia, $username, $password, $nama_panitia)
+    {
+        $user = new User([
+                    'username' => $username,
+                    'password' => bcrypt($password),
+                    'role' => 0
+                ]);
+        $user->save();
+
+        $panitia = new Panitia([
+                'id_panitia' => $id_panitia,
+                'username' => $username,
+                'nama_panitia' => $nama_panitia
+        ]);
+        $panitia->user()->associate($user);
+        $panitia->save();
     }
 }
