@@ -15,7 +15,7 @@ class CreateJurisTable extends Migration
     {
         Schema::create('juri', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_juri');
+            $table->integer('id_juri')->unique();
             $table->string('username');
             $table->string('nama_juri');
             $table->timestamps();
