@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<br><br>
 <?php
 function stringProcessing($field_name)
 {
@@ -11,7 +10,7 @@ function stringProcessing($field_name)
 ?>
 <!-- kanan -->
 <div class="container" >
-  <br>
+  <br><br>
   <center>
     <label>
       <h2> FORM <br>PENILAIAN PERLOMBAAN </h2>
@@ -55,6 +54,7 @@ function stringProcessing($field_name)
       <br><br>
     @endforeach
     <center><input class="btn btn-primary"  type="submit" value="Submit Nilai" ></center>
+    <br><br>
   </form>
 </div>
 </div>

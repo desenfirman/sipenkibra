@@ -57,10 +57,11 @@ $ php artisan serve
 - [X] Meregister Panitia
 
 ## specification candidate
-- [ ] blok lihat rekap nilai jika belum dinilai
+- [x] blok lihat rekap nilai jika belum dinilai
 - [ ] tidak bisa akses form penilaian ketika belum konfirmasi
-- [ ] warna hijau jika telah dinilai
-- [ ] blok lihat peringkat & lihat semua regu peserta ketika semua belum dinilai
+- [ ] warna hijau jika telah dinilai (DASHBOARD JURI)
+- [ ] urutkan berdasarkan no_regu (DASHBOARD JURI)
+- [x] blok lihat peringkat & lihat semua regu peserta ketika semua belum dinilai
 - [ ] add repeat password
 
 ## Some to-do-list (should-do's)

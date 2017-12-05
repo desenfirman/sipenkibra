@@ -38,5 +38,6 @@
 		</table>
         </div>
     </center>
+    <br>
 </div>
 @endsection

@@ -1,15 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-
-<br><br>
 	<div class = "container">
     <div class = "row">
       <div class="col-md-2"></div>
       <form class="col-md-8 login-from" method="POST" action="/tambah_panitia">
         {{csrf_field()}}
         <br><br>
-          <h3><em class="glyphicon glyphicon-user"></em> REGISTRASI PANITIA</h3>
+          <center><h2><em class="glyphicon glyphicon-user"></em> REGISTRASI PANITIA</h2></center>
+          <hr>
           <br>
               <div class="form-group">
                   <label >Id Panitia</label>

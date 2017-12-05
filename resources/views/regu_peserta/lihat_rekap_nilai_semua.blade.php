@@ -46,5 +46,6 @@ function stringProcessing($field_name)
           </div>
 		</div>
     </div>
+    <br>
 </div>
 @endsection
