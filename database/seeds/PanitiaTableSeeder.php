@@ -30,6 +30,7 @@ class PanitiaTableSeeder extends Seeder
         $panitia = new Panitia();
         $panitia->username = $username;
         $panitia->nama_panitia = $nama_panitia;
+        $panitia->id_panitia = 1;
         $panitia->user()->associate($user);
         $panitia->save();
     }
