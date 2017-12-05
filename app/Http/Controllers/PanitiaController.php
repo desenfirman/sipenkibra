@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use SIPENKIBRA\ReguPeserta;
 use Illuminate\Support\Facades\DB;
 use SIPENKIBRA\Juri;
+use SIPENKIBRA\Nilai;
 
 class PanitiaController extends Controller
 {
@@ -45,6 +46,7 @@ class PanitiaController extends Controller
 
     public function tambahReguPeserta(Request $request)
     {
+        $no_regu = (int) $request->input('no_regu');
         $username = $request->input('username');
         $password = $request->input('password');
         $nama_regu = $request->input('nama_regu');
@@ -52,28 +54,34 @@ class PanitiaController extends Controller
         $nama_anggota_regu = $request->input('nama_anggota_regu');
         $nama_official_regu = $request->input('nama_official_regu');
 
-        DB::transaction();
-        try {
-            $no_regu = $request->no_regu;
-            $status = 1;
-            $status_tambah_regu = ReguPeserta::tambahRegu($username, $password, $nama_regu, $nama_sekolah, $nama_sekolah, $nama_anggota_regu, $nama_official_regu);
-            $status_tambah_nilai = 1;
-            $juri = Juri::all();
-            foreach ($juri as $key) {
-                $status_tambah_nilai = Nilai::createEntryNilai($no_regu, $juri->id_juri);
-                if ($status_tambah_nilai == 1) {
-                    break;
-                }
+
+        // try {
+        $status = 1;
+        $status_tambah_regu = ReguPeserta::tambahRegu(
+                $no_regu,
+                $username,
+                $password,
+                $nama_regu,
+                $nama_sekolah,
+                $nama_anggota_regu,
+                $nama_official_regu
+            );
+
+        $status_tambah_nilai = 1;
+        $juris = Juri::all();
+        foreach ($juris as $juri) {
+            $status_tambah_nilai = Nilai::createEntryNilai($no_regu, $juri->id_juri);
+            if ($status_tambah_nilai == 1) {
+                break;
             }
-            if ($status_tambah_regu == 0 && $status_tambah_nilai == 0) {
-                DB::commit();
-                $status = 0;
-            }
-        } catch (Exception $e) {
-            DB::rollback();
-        } finally {
-            return $status;
         }
+        if ($status_tambah_regu == 0 && $status_tambah_nilai == 0) {
+            $status = 0;
+        }
+        // } catch (Exception $e) {
+        // } finally {
+        //     return $status;
+        // }
     }
 
     public function konfirmasi(Request $request)
@@ -86,5 +94,33 @@ class PanitiaController extends Controller
 
     public function tambahJuri(Request $request)
     {
+        $id_juri = $request->input('id_juri');
+        $nama_juri = $request->input('nama_juri');
+        $username = $request->input('username');
+        $password = $request->input('password');
+
+        // try {
+        $status = 1;
+        $status_tambah_juri = Juri::tambahJuri(
+                $id_juri,
+                $nama_juri,
+                $username,
+                $password
+            );
+
+        $regu_pesertas = ReguPeserta::all();
+        foreach ($regu_pesertas as $regu_peserta) {
+            $status_tambah_nilai = Nilai::createEntryNilai($regu_peserta->no_regu, $id_juri);
+            if ($status_tambah_nilai == 1) {
+                break;
+            }
+        }
+        if ($status_tambah_juri == 0 && $status_tambah_nilai == 0) {
+            $status = 0;
+        }
+        // } catch (Exception $e) {
+        // } finally {
+        //     return $status;
+        // }
     }
 }

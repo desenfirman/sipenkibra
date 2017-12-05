@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg" style= "background-color: #002266">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" style="color:white;" href="#">SIPENKIBRA</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -12,10 +12,10 @@
       </li>
       @if (Auth::user()->role == 0)
       <li class="nav-item">
-        <a class="nav-link" href="/panitia/tambahregupeserta">Tambah Regu peserta <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/panitia/tambah_regu_peserta">Tambah Regu peserta <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/panitia/tambahjuri">Tambah Juri <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/panitia/tambah_juri">Tambah Juri <span class="sr-only">(current)</span></a>
       </li>
       @endif
       @if (Auth::user()->role == 2)
@@ -31,7 +31,7 @@
 
     </ul>
         <div class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="navbar-text nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{Auth::user()->username}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" role="menu">

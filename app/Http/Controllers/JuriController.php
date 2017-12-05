@@ -78,6 +78,6 @@ class JuriController extends Controller
         $juri_active_session = Juri::find(Auth::user()->id);
         $id_juri = $juri_active_session->id_juri;
         $status = Nilai::setTelahTernilaiOleh($no_regu, $id_juri);
-        return redirect('/juri');
+        return redirect('/juri')->with('submit_nilai_sukses', 'Data nilai telah berhasil di simpan');
     }
 }

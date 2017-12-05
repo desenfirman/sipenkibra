@@ -2,11 +2,17 @@
 
 
 @section('content')
-<br><br>
 <div class="container">
-    <br><br><br>
+    <br>
+    @if (Session::has('message'))
+    <center>
+      <div class="alert alert-warning" role="alert">
+        {{Session::get('message')}}
+      </div>
+    </center
+    @endif
+    <br><br>
     <center><h1>DATA DIRI REGU PESERTA</h1></center>
-
     <br>
             <div class="panel-body">
               <div class="row">
@@ -52,6 +58,7 @@
             </div>
                 </div>
             </div>
-
             <br>
+          </div>
+
 @endsection

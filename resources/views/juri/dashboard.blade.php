@@ -1,10 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-<br><br><br>
 
 <div class="container" style="background-color: #f4f4f4;">
-      <br><br><br>
+  <br>
+  @if (Session::has('submit_nilai_sukses'))
+    <center>
+      <div class="alert alert-success" role="alert">
+        {{Session::get('submit_nilai_sukses')}}
+      </div>
+    </center
+  @endif
+  <br>
         <center>
           <div class="col-md-4">
             <label>
@@ -36,7 +43,6 @@
               </div>
         @endfor
       </div>
-      <br><br><br>
+      <br>
   </div>
-
 @endsection

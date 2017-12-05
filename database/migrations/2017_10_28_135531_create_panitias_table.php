@@ -15,6 +15,7 @@ class CreatePanitiasTable extends Migration
     {
         Schema::create('panitia', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('id_panitia')->unique();
             $table->string('username');
             $table->string('nama_panitia');
             $table->timestamps();

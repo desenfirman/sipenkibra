@@ -43,7 +43,10 @@ class ReguPesertaController extends Controller
         $no_regu = $regu_peserta_active_session->no_regu;
 
         if (ReguPeserta::ambilStatusKonfirmasiReguPeserta($no_regu) == 0) {
-            return back();
+            return redirect('/regu_peserta')->with('message', 'Regu peserta belum melakukan konfirmasi');
+        } elseif (Nilai::ambilStatusNilaiReguPeserta($no_regu) == false) {
+            return redirect('/regu_peserta')->with('message', 'Rekap nilai belum tersedia.
+                Juri belum mensubmit penilaiannya');
         } else {
             $rekap_nilai = Nilai::ambilRekapNilai($no_regu);
             //dd($data);
@@ -53,6 +56,10 @@ class ReguPesertaController extends Controller
 
     public function lihatRekapNilaiSemuaRegu()
     {
+        if (Nilai::ambilStatusNilaiSemuaReguPeserta() == false) {
+            return redirect('/regu_peserta')->with('message', 'Rekap nilai semua regu peserta belum tersedia.
+                Rekap nilai semua regu peserta hanya dapat dilihat ketika semua regu peserta telah dinilai.');
+        }
         $regu_pesertas = ReguPeserta::all();
         $rekap_nilai = Nilai::ambilRekapNilaiSemuaRegu();
         //dd($rekap_nilai_semua_regu);
@@ -64,14 +71,22 @@ class ReguPesertaController extends Controller
                 }
                 $rekap_nilai[$regu_peserta->no_regu][$kriteria_key] = $value['total_kategori'];
             }
-            $rekap_nilai[$regu_peserta->no_regu] = array('nama_sekolah' => $regu_peserta->nama_sekolah) + $rekap_nilai[$regu_peserta->no_regu];
-            $rekap_nilai[$regu_peserta->no_regu] = array('nama_regu' => $regu_peserta->nama_regu) + $rekap_nilai[$regu_peserta->no_regu];
+            $rekap_nilai[$regu_peserta->no_regu] = array(
+                'nama_sekolah' => $regu_peserta->nama_sekolah
+            ) + $rekap_nilai[$regu_peserta->no_regu];
+            $rekap_nilai[$regu_peserta->no_regu] = array(
+                'nama_regu' => $regu_peserta->nama_regu
+            ) + $rekap_nilai[$regu_peserta->no_regu];
         }
         return view('regu_peserta.lihat_rekap_nilai_semua')->with('rekap_nilais', $rekap_nilai);
     }
 
     public function lihatPeringkat()
     {
+        if (Nilai::ambilStatusNilaiSemuaReguPeserta() == false) {
+            return redirect('/regu_peserta')->with('message', 'Peringkat regu peserta belum tersedia.
+                Peringkat regu peserta hanya dapat dilihat ketika semua regu peserta telah dinilai.');
+        }
         $regu_pesertas = ReguPeserta::all();
         $rekap_nilai = Nilai::ambilRekapNilaiSemuaRegu();
         $peringkat = array();

@@ -34,12 +34,18 @@ Route::group(['middleware' => ['auth', 'juri']], function () {
 //Route list for panitia
 Route::group(['middleware' => ['auth', 'panitia']], function () {
     Route::get('/panitia', 'PanitiaController@index');
-    Route::get('/panitia/tambahregupeserta', function () {
+    Route::get('/panitia/tambah_regu_peserta', function () {
         return view('panitia.tambah_regu_peserta');
     });
-    Route::get('/panitia/tambahjuri', function () {
+    Route::get('/panitia/tambah_juri', function () {
         return view('panitia.tambah_juri');
     });
-    Route::post('/panitia/tambahregupeserta', 'PanitiaController@tambahReguPeserta');
+    Route::post('/panitia/tambah_regu_peserta', 'PanitiaController@tambahReguPeserta');
+    Route::post('/panitia/tambah_juri', 'PanitiaController@tambahjuri');
     Route::post('/panitia', 'PanitiaController@konfirmasi');
+});
+
+Route::post('/tambah_panitia', 'RegistrasiPanitiaController@tambahPanitia');
+Route::get('/tambah_panitia', function () {
+    return view('panitia.registrasi_panitia');
 });
