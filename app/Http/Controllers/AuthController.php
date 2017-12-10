@@ -16,7 +16,7 @@ class AuthController extends Controller
      *
      * @return http redirect
      */
-    public function index()
+    public function lihatDashboard()
     {
         $authenticate_user = Auth::user();
         if ($authenticate_user == null) {

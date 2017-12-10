@@ -4,7 +4,15 @@
     <!-- Button trigger modal -->
 
 <div class="container" style="background-color: #f4f4f4;">
-      <br><br><br>
+      <br>
+      @if (Session::has('message'))
+      <center>
+        <div class="alert alert-warning" role="alert">
+          {{Session::get('message')}}
+        </div>
+      </center
+      @endif
+      <br><br>
         <center>
           <div class="col-md-4">
             <label>

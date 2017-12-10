@@ -118,15 +118,19 @@ function stringProcessing($field_name)
     xhttp.setRequestHeader('X-CSRF-TOKEN', "{{ csrf_token() }}");
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.onreadystatechange = function() {
-      var message = "Silahkan cek kembali koneksi anda";
-      var className ="fail";
+      var message = "Perubahan belum disimpan. Silahkan cek kembali koneksi anda";
+      var className ="danger";
       if (this.readyState == 4) {
-        var res = JSON.parse(this.responseText);
-        if (res.status == 0 && this.status == 200) {
-          message = "Perubahan untuk kriteria '" + kriteria + "' dengan nilai = '" + value + "' telah tersimpan";
-          className = "success";
-          document.getElementById(kriteria).setAttribute("data-value", value);
-          showNotify(message, className);
+        try {
+            var res = JSON.parse(this.responseText);
+            if (res.status == 0 && this.status == 200) {
+              message = "Perubahan untuk kriteria '" + kriteria + "' dengan nilai = '" + value + "' telah tersimpan";
+              className = "success";
+              document.getElementById(kriteria).setAttribute("data-value", value);
+            }
+        } catch(e) {
+        }finally{
+            showNotify(message, className);
         }
       }
     };

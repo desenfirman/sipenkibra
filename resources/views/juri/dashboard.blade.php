@@ -11,6 +11,13 @@
       </div>
     </center
   @endif
+  @if (Session::has('message'))
+    <center>
+      <div class="alert alert-warning" role="alert">
+        {{Session::get('message')}}
+      </div>
+    </center
+  @endif
   <br>
         <center>
           <div class="col-md-4">

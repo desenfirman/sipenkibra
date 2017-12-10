@@ -17,7 +17,7 @@ class PanitiaController extends Controller
     }
 
     //Implementasi Lihat Dashboard
-    public function index()
+    public function lihatDashboard()
     {
         $biodata_regu_peserta = ReguPeserta::ambilDataSemuaReguPeserta();
         $status_konfirmasi = ReguPeserta::ambilStatusKonfirmasiSemuaReguPeserta();
@@ -54,7 +54,7 @@ class PanitiaController extends Controller
         $nama_anggota_regu = $request->input('nama_anggota_regu');
         $nama_official_regu = $request->input('nama_official_regu');
 
-
+        echo($nama_anggota_regu);
         // try {
         $status = 1;
         $status_tambah_regu = ReguPeserta::tambahRegu(
@@ -76,7 +76,7 @@ class PanitiaController extends Controller
             }
         }
         if ($status_tambah_regu == 0 && $status_tambah_nilai == 0) {
-            $status = 0;
+            return redirect('/panitia')->with('message', 'Regu peserta telah ditambahkan');
         }
         // } catch (Exception $e) {
         // } finally {

@@ -37,8 +37,8 @@
                         <td>{{$data['nama_official_regu']}}</td>
                       </tr>
                        <tr>
-                        <!-- <td>Nama Anggota</td>
-                        <td></td> -->
+                        <td>Nama Anggota</td>
+                        <td><?php echo $data['nama_anggota']; ?> </td>
                        </tr>
                     </tbody>
                   </table>
@@ -49,14 +49,27 @@
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <div class="alert alert-warning" role="alert">
-                      <h4 class="alert-heading">Pemberitahuan</h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam odio nisi, eligendi repellendus laboriosam rem distinctio nesciunt cum ipsam magni, voluptatibus praesentium sed fugiat optio, harum. Blanditiis, nam officia assumenda.</p>
-                      <hr>
-                      <p class="mb-0">Status Konfirmasi</p>
-                    </div>
+                  <div class="alert alert-info" role="alert">
+                    <p>
+                      {{$data['msg_status_konfirmasi']}}
+                    </p>
+                  </div>
+                  <div class="alert alert-info" role="alert">
+                    <p>
+                      {{$data['msg_nilai']}}
+                    </p>
+                 </div>
+                 <div class="alert alert-info" role="alert">
+                    <p>
+                      {{$data['msg_nilai_semua_regu']}}
+                    </p>
+                 </div>
+                 <div class="alert alert-info" role="alert">
+                    <p>
+                      {{$data['msg_peringkat']}}
+                    </p>
+                 </div>
             </div>
-                </div>
             </div>
             <br>
           </div>

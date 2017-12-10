@@ -63,6 +63,7 @@ $ php artisan serve
 - [ ] urutkan berdasarkan no_regu (DASHBOARD JURI)
 - [x] blok lihat peringkat & lihat semua regu peserta ketika semua belum dinilai
 - [ ] add repeat password
+- [ ] add biodata regu peserta in lihat form penilaian
 
 ## Some to-do-list (should-do's)
 - [ ]  change lihatDashboard() to index() in documentation
@@ -74,11 +75,13 @@ $ php artisan serve
 - [ ]  add no_regu in updateNilai
 - [ ]  change parameter input in konfirmasi
 - [ ]  ambil data regu in lihat nilai semua regu peserta
+- [ ]
 
 ## Testing Method
 - [ ] Melihat rekap dari regu peserta
 - [ ] Melihat dashboard panitia
 - [ ] Memilih nilai
+
 
 ## Unexpected changes
 - [ ] add lihat nilai seluruh regu peserta in panitia

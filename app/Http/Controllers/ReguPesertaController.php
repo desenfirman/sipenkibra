@@ -16,15 +16,40 @@ class ReguPesertaController extends Controller
     }
 
     //Implementasi lihat dashboard
-    public function index()
+    public function lihatDashboard()
     {
         $regu_peserta_active_session = ReguPeserta::find(Auth::user()->id);
         $no_regu = $regu_peserta_active_session->no_regu;
         $nama_regu = $regu_peserta_active_session->nama_regu;
         $nama_sekolah = $regu_peserta_active_session->nama_sekolah;
         $nama_official_regu =$regu_peserta_active_session->nama_official_regu;
-        $nama_anggota = $regu_peserta_active_session->nama_anggota_regu;
+        $nama_anggota = str_replace('<br />', '<br>', nl2br($regu_peserta_active_session->nama_anggota_regu)) ;
         $status_konfirmasi = $regu_peserta_active_session->status_konfirmasi;
+
+        $msg_nilai;
+        $msg_nilai_semua_regu;
+        $msg_peringkat;
+        $msg_status_konfirmasi;
+
+        if ($status_konfirmasi == 1) {
+            $msg_status_konfirmasi = "Regu peserta telah melakukan konfirmasi";
+        } else {
+            $msg_status_konfirmasi = "Regu peserta belum melakukan konfirmasi. Harap lakukan konfirmasi terlebih dahulu";
+        }
+
+        if (Nilai::ambilStatusNilaiReguPeserta($no_regu) == true) {
+            $msg_nilai = "Rekap nilai sudah tersedia. Silahkan cek pada Lihat Rekap Nilai -> Lihat Regu Peserta";
+        } else {
+            $msg_nilai = "Rekap nilai semua regu belum tersedia.";
+        }
+
+        if (Nilai::ambilStatusNilaiSemuaReguPeserta() == true) {
+            $msg_nilai_semua_regu = "Rekap nilai sudah tersedia. Silahkan cek pada Lihat Rekap Nilai -> Semua regu peserta";
+            $msg_peringkat = "Peringkat regu peserta sudah tersedia. Silahkan cek pada Lihat Rekap Nilai -> Lihat peringkat";
+        } else {
+            $msg_nilai_semua_regu = "Rekap nilai belum tersedia.";
+            $msg_peringkat = "Peringkat regu peserta masih belum tersedia";
+        }
 
         $data = array(
             'no_regu' => $no_regu,
@@ -32,7 +57,10 @@ class ReguPesertaController extends Controller
             'nama_sekolah' => $nama_sekolah,
             'nama_official_regu' => $nama_official_regu,
             'nama_anggota' => $nama_anggota,
-            'status_konfirmasi' => $status_konfirmasi
+            'msg_status_konfirmasi' => $msg_status_konfirmasi,
+            'msg_nilai' => $msg_nilai,
+            'msg_nilai_semua_regu' => $msg_nilai_semua_regu,
+            'msg_peringkat' => $msg_peringkat
         );
         return view('regu_peserta.dashboard')->with('data', $data);
     }

@@ -18,9 +18,9 @@ class JuriController extends Controller
     }
 
     //Implementasi lihat dashboard
-    public function index()
+    public function lihatDashboard()
     {
-        $juri_active_session = Juri::find(Auth::user()->id);
+        $juri_active_session = Juri::ambilDataJuri(Auth::user()->id);
         $id_juri = $juri_active_session->id_juri;
         $username = $juri_active_session->username;
         $nama_juri = $juri_active_session->nama_juri;
@@ -53,7 +53,11 @@ class JuriController extends Controller
 
     public function tampilkanFormPenilaian($no_regu)
     {
-        $juri_active_session = Juri::find(Auth::user()->id);
+        if (ReguPeserta::ambilStatusKonfirmasiReguPeserta($no_regu) == 0) {
+            return redirect('/juri/')->with('message', 'Regu Peserta belum melakukan konfirmasi');
+        }
+
+        $juri_active_session = Juri::ambilDataJuri(Auth::user()->id);
         $id_juri = $juri_active_session->id_juri;
         $data_regu_peserta = ReguPeserta::ambilDataReguPeserta($no_regu);
         $nilai = Nilai::ambilDataNilaiPerJuri($no_regu, $id_juri);
