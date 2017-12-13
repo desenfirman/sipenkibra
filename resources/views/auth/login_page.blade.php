@@ -29,9 +29,9 @@
                         Login gagal.
                     </div>
                   @endif
-                  @if (Session:has('message'))
+                  @if (Session::has('message'))
                     <div class="alert alert-warning" role="alert">
-                        {{Session:get('message')}}
+                        {{Session::get('message')}}
                     </div>
                   @endif
               </div>
