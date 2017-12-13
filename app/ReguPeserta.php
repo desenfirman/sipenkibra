@@ -18,6 +18,7 @@ class ReguPeserta extends Model
     public static function ambilDataNomorUrutSemuaReguPeserta()
     {
         $regu_pesertas = ReguPeserta::pluck('no_regu');
+        //dd($regu_pesertas);
         return $regu_pesertas->toArray();
     }
 
@@ -37,11 +38,13 @@ class ReguPeserta extends Model
     {
         $regu_peserta = ReguPeserta::where('no_regu', $no_regu)->first();
         return $regu_peserta->status_konfirmasi;
+
     }
 
     public static function ambilStatusKonfirmasiSemuaReguPeserta()
     {
         $regu_pesertas = ReguPeserta::pluck('status_konfirmasi');
+        //dd($regu_pesertas);
         return $regu_pesertas->toArray();
     }
 

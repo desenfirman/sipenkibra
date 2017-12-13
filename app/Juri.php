@@ -14,7 +14,7 @@ class Juri extends Model
         return $this->belongsTo('SIPENKIBRA\User', 'id');
     }
 
-    public function ambilDataJuri($id_user)
+    public static function ambilDataJuri($id_user)
     {
         $juri = Juri::find($id_user);
         return $juri;

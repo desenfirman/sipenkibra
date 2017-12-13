@@ -40,15 +40,15 @@ class ReguPesertaController extends Controller
         if (Nilai::ambilStatusNilaiReguPeserta($no_regu) == true) {
             $msg_nilai = "Rekap nilai sudah tersedia. Silahkan cek pada Lihat Rekap Nilai -> Lihat Regu Peserta";
         } else {
-            $msg_nilai = "Rekap nilai semua regu belum tersedia.";
+            $msg_nilai = "Rekap nilai regu peserta ini belum tersedia.";
         }
 
         if (Nilai::ambilStatusNilaiSemuaReguPeserta() == true) {
-            $msg_nilai_semua_regu = "Rekap nilai sudah tersedia. Silahkan cek pada Lihat Rekap Nilai -> Semua regu peserta";
-            $msg_peringkat = "Peringkat regu peserta sudah tersedia. Silahkan cek pada Lihat Rekap Nilai -> Lihat peringkat";
+            $msg_nilai_semua_regu = "Rekap nilai semua regu sudah tersedia. Silahkan cek pada Lihat Rekap Nilai -> Semua regu peserta";
+            $msg_peringkat = "Peringkat semua regu peserta sudah tersedia. Silahkan cek pada Lihat Rekap Nilai -> Lihat peringkat";
         } else {
-            $msg_nilai_semua_regu = "Rekap nilai belum tersedia.";
-            $msg_peringkat = "Peringkat regu peserta masih belum tersedia";
+            $msg_nilai_semua_regu = "Rekap nilai semua regu belum tersedia.";
+            $msg_peringkat = "Peringkat semua regu peserta masih belum tersedia";
         }
 
         $data = array(

@@ -26,14 +26,13 @@ class JuriController extends Controller
         $nama_juri = $juri_active_session->nama_juri;
 
         $no_urut = ReguPeserta::ambilDataNomorUrutSemuaReguPeserta();
-        $status_konfirmasi = ReguPeserta::ambilStatusKonfirmasiSemuaReguPeserta();
         $color_code = array();
         $status = array();
         //dd($count_peserta);
-        foreach ($status_konfirmasi as $key => $value) {
+        foreach ($no_urut as $key => $value) {
             $btn_color = "";
             $status_msg = "";
-            if ($value == 0) {
+            if (ReguPeserta::ambilStatusKonfirmasiReguPeserta($value) == 0) {
                 $status_msg = "Regu peserta belum melakukan konfirmasi";
                 $btn_color = "danger";
             } else {
@@ -53,7 +52,7 @@ class JuriController extends Controller
 
     public function tampilkanFormPenilaian($no_regu)
     {
-        if (ReguPeserta::ambilStatusKonfirmasiReguPeserta($no_regu) == 0) {
+        if (ReguPeserta::ambilStatusKonfirmasiReguPeserta($no_regu) == 0 ) {
             return redirect('/juri/')->with('message', 'Regu Peserta belum melakukan konfirmasi');
         }
 
