@@ -76,12 +76,8 @@ class PanitiaController extends Controller
             }
         }
         if ($status_tambah_regu == 0 && $status_tambah_nilai == 0) {
-            return redirect('/panitia')->with('message', 'Regu peserta telah ditambahkan');
+            return redirect('/panitia')->with('message', 'Regu peserta telah berhasil ditambahkan');
         }
-        // } catch (Exception $e) {
-        // } finally {
-        //     return $status;
-        // }
     }
 
     public function konfirmasi(Request $request)
@@ -117,10 +113,7 @@ class PanitiaController extends Controller
         }
         if ($status_tambah_juri == 0 && $status_tambah_nilai == 0) {
             $status = 0;
+            return redirect('/panitia')->with('message', 'Juri telah berhasil ditambahkan');
         }
-        // } catch (Exception $e) {
-        // } finally {
-        //     return $status;
-        // }
     }
 }

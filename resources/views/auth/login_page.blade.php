@@ -24,10 +24,15 @@
                   <label>Password</label>
                   <input type="password" class="form-control" name="password" placeholder="Password" />
                   <br>
-                  @if ($errors->has('password') )
-                      <div class="alert alert-warning" role="alert">
+                  @if ($errors->has('password'))
+                    <div class="alert alert-warning" role="alert">
                         Login gagal.
-                      </div>
+                    </div>
+                  @endif
+                  @if (Session:has('message'))
+                    <div class="alert alert-warning" role="alert">
+                        {{Session:get('message')}}
+                    </div>
                   @endif
               </div>
              <div class="text-right">

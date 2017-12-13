@@ -17,6 +17,7 @@ class RegistrasiPanitiaController extends Controller
 
         if ($this->authorizationCodeCheck($input_code)) {
             Panitia::tambahPanitia($id_panitia, $username, $password, $nama_panitia);
+            return view('auth.login_page')->with('message', 'Panitia telah berhasil ditambahkan.');
         } else {
             return back();
         }

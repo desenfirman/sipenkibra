@@ -22,10 +22,6 @@
                   <label>Password</label>
                   <input type="password" class="form-control" name="password" placeholder="Password" />
               </div>
-              <div class="form-group">
-                  <label>Ulangi Password</label>
-                  <input type="password" class="form-control" name="ulangi_password" placeholder="Password" />
-              </div>
 			         <div class="form-group">
                   <label>Nama Panitia</label>
                   <input type="text" class="form-control" name="nama_panitia" placeholder="Nama panitia" />
