@@ -36,7 +36,7 @@ class ReguPesertaController extends Controller
         } else {
             $msg_status_konfirmasi = "Regu peserta belum melakukan konfirmasi. Harap lakukan konfirmasi terlebih dahulu";
         }
-
+        
         if (Nilai::ambilStatusNilaiReguPeserta($no_regu) == true) {
             $msg_nilai = "Rekap nilai sudah tersedia. Silahkan cek pada Lihat Rekap Nilai -> Lihat Regu Peserta";
         } else {

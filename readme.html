@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>SIPENKIBRA</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+    </head>
+    <body class="vscode-light">
+        <h1 id="sipenkibra">SIPENKIBRA</h1>
+<p align="center">Master branch: <img src="https://travis-ci.org/desenfirman/sipenkibra.svg?branch=master"></p>
+<p align="center">Development branch: <img src="https://travis-ci.org/desenfirman/sipenkibra.svg?branch=development"></p>
+<h2 id="how-to-install">How to Install</h2>
+<h3 id="requirement">Requirement</h3>
+<pre><code class="language-text"><code><div>- XAMPP
+- Composer : https://getcomposer.org/download/
+</div></code></code></pre>
+<h3 id="installation-instruction">Installation Instruction</h3>
+<pre><code class="language-bash"><div>$ git <span class="hljs-built_in">clone</span> https://github.com/desenfirman/sipenkibra.git
+$ <span class="hljs-built_in">cd</span> sipenkibra
+$ cp .env.example .env
+
+</div></code></pre>
+<pre><code class="language-text"><code><div>    edit file .env using your text editor. set:
+        DB_DATABASE=sipenkibra (your database name)
+        DB_USERNAME=root (if you're use XAMPP)
+        DB_PASSWORD= (if you're use XAMPP)
+
+```bash
+$ composer self-update
+$ composer install
+$ php artisan key:generate
+$ php artisan migrate:refresh --seed
+</div></code></code></pre>
+<h3 id="runserve-this-project-on-localhost">Run/serve this project on localhost</h3>
+<pre><code class="language-bash"><div>$ php artisan serve
+  access webpage using http://localhost:8000/
+</div></code></pre>
+<h2 id="fungsionalitas-sipenkibra">Fungsionalitas SIPENKIBRA</h2>
+<h3 id="pengguna-terdaftar">Pengguna Terdaftar</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Login</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Logout
+<img src="https://i.imgur.com/GlZWr5z.gif" alt="alt text" title="Fungsionalitas Pengguna Terdaftar"></li>
+</ul>
+<h3 id="juri">Juri</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Melihat dashboard juri</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Membuka form penilaian</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Memilih nilai</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Submit nilai
+<img src="https://i.imgur.com/GlZWr5z.gif" alt="alt text" title="Fungsionalitas Juri">
+<img src="https://i.imgur.com/GlZWr5z.gif" alt="alt text" title="Fungsionalitas Juri"></li>
+</ul>
+<h3 id="regu-terdaftar">Regu Terdaftar</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Melihat dashboard regu peserta</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Melihat rekap nilai</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> <s>Melihat pemberitahuan</s></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Melihat peringkat</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Melihat rekap nilai seluruh regu peserta</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> <s>Mengunduh rekap nilai</s>
+<img src="https://i.imgur.com/GlZWr5z.gif" alt="alt text" title="Fungsionalitas Regu Terdaftar">
+![alt text][fig_juri_lihat_peringkat]</li>
+</ul>
+<h3 id="panitia">Panitia</h3>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Melihat dashboard panitia</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Menambahkan regu peserta</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Mengkonfirmasi regu peserta</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Menambahkan juri</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Meregister Panitia
+<img src="https://i.imgur.com/GlZWr5z.gif" alt="alt text" title="Fungsionalitas Panitia">
+<img src="https://i.imgur.com/GlZWr5z.gif" alt="alt text" title="Fungsionalitas Panitia">
+<img src="https://i.imgur.com/GlZWr5z.gif" alt="alt text" title="Fungsionalitas Panitia"></li>
+</ul>
+<h2 id="specification-candidate">specification candidate</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> blok lihat rekap nilai jika belum dinilai</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> tidak bisa akses form penilaian ketika belum konfirmasi</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> warna hijau jika telah dinilai (DASHBOARD JURI)</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> <s>urutkan berdasarkan no_regu (DASHBOARD JURI)</s></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> blok lihat peringkat &amp; lihat semua regu peserta ketika semua belum dinilai</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> <s>add repeat password</s></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> <s>add biodata regu peserta in lihat form penilaian</s></li>
+</ul>
+<h2 id="some-to-do-list-should-dos">Some to-do-list (should-do's)</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  change lihatDashboard() to index() in documentation</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  add Auth facades to documentation</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  add id_juri, id_peserta, id_panitia in documentation</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  add role in user database</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  add rememberToken in user table</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  remove id_juri in membuka form penilaian</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  add no_regu in updateNilai</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  change parameter input in konfirmasi</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox">  ambil data regu in lihat nilai semua regu peserta</li>
+</ul>
+<h2 id="unexpected-changes">Unexpected changes</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox"> <s>add lihat nilai seluruh regu peserta in panitia</s></li>
+</ul>
+<h2 id="some-optimization-candidate">Some optimization candidate</h2>
+<ul>
+<li><s>use only one Auth function</s></li>
+</ul>
+<h2 id="kelompok-1">Kelompok 1</h2>
+<pre><code class="language-text"><code><div>Iskarimah Hidayatin - Project Manager
+Ridwan Fajar Widodo - System Analyst
+Dese Narfa Firmansyah - Programmer
+Gema Prajna Tri Pamungkas - Tester
+</div></code></code></pre>
+
+    </body>
+    </html>

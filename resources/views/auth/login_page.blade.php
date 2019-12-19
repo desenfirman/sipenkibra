@@ -8,7 +8,7 @@
       <div class="col-lg-4" style="background-color: #f4f4f4; padding: 40px;">
           <h2> Apa itu SIPENKIBRA</h2>
           <hr>
-          <p>   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non quidem saepe fugit. Nobis voluptates molestias aut praesentium est, dolore nulla perferendis iste velit culpa saepe sit unde amet voluptatibus provident, qui vel, perspiciatis possimus consequuntur. Distinctio, aspernatur earum aperiam aut optio quisquam dolorum nobis inventore. Quidem necessitatibus consectetur quas neque.</p>
+          <p>Sistem Penilaian Perlombaan PASKIBRA (SIPENKIBRA) adalah sebuah platform yang digunakan untuk melakukan penilaian perlombaan PASKIBRA.</p>
       </div>
       <div class="col-lg-4" style="background-color: #f4f4f4; padding: 40px;">
           <h3><em class="glyphicon glyphicon-user"></em> LOGIN</h3>

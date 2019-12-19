@@ -29,7 +29,7 @@
                 <div class="card text-white bg-info mb-3 d-flex" >
                   <div class="card-body">
                     <h5 class="card-title">Petunjuk</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="card-text">Juri tidak dapat membuka form penilaian regu peserta yang belum melakukan konfirmasi</p>
                   </div>
                 </div>
                 <br>    <br>
