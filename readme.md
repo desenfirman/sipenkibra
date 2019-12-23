@@ -52,15 +52,15 @@ $ php artisan serve
 
 ### Pengguna Terdaftar
 
-![alt text][fig_user_terdaftar]
+![Fungsionalitas Pengguna Terdaftar](https://i.imgur.com/GlZWr5z.gif)
 
 - [X] Login
 - [X] Logout
 
 ### Juri
 
-![alt text][fig_juri_1]
-![alt text][fig_juri_2]
+![Fungsionalitas Juri](https://i.imgur.com/tDyEFd2.gif)
+![Fungsionalitas Juri](https://i.imgur.com/2VnrlG1.gif)
 
 - [X] Melihat dashboard juri
 - [X] Membuka form penilaian
@@ -69,8 +69,8 @@ $ php artisan serve
 
 ### Regu Terdaftar
 
-![alt text][fig_regu_lihat_nilai]
-![alt text][fig_regu_lihat_peringkat]
+![Fungsionalitas Regu Terdaftar: Lihat Nilai](https://i.imgur.com/YGuwsnH.gif)
+![Fungsionalitas Regu Terdaftar: Lihat Peringkat](https://i.imgur.com/ZsTLQ3k.gif)
 
 - [X] Melihat dashboard regu peserta
 - [X] Melihat rekap nilai
@@ -81,9 +81,9 @@ $ php artisan serve
 
 ### Panitia
 
-![alt text][fig_panitia_konfirmasi]
-![alt text][fig_panitia_tambah_juri]
-![alt text][fig_panitia_tambah_peserta]
+![Fungsionalitas Panitia: Melakukan konfirmasi peserta](https://i.imgur.com/6GzFzeq.gif)
+![Fungsionalitas Panitia: Tambah juri](https://i.imgur.com/4NaTDQI.gif)
+![Fungsionalitas Panitia: Tambah peserta](https://i.imgur.com/1S9llbd.gif)
 
 - [X] Melihat dashboard panitia
 - [X] Menambahkan regu peserta
@@ -129,12 +129,3 @@ Ridwan Fajar Widodo         - System Analyst
 Dese Narfa Firmansyah       - Programmer
 Gema Prajna Tri Pamungkas   - Tester
 ```
-
-[fig_user_terdaftar]:           https://i.imgur.com/GlZWr5z.gif "Fungsionalitas Pengguna Terdaftar"
-[fig_juri_1]:                   https://i.imgur.com/tDyEFd2.gif "Fungsionalitas Juri"
-[fig_juri_2]:                   https://i.imgur.com/2VnrlG1.gif "Fungsionalitas Juri"
-[fig_regu_lihat_nilai]:         https://i.imgur.com/YGuwsnH.gif "Fungsionalitas Regu Terdaftar"
-[fig_regu_lihat_peringkat]:     https://i.imgur.com/ZsTLQ3k.gif "Fungsionalitas Regu Terdaftar"
-[fig_panitia_konfirmasi]:       https://i.imgur.com/6GzFzeq.gif "Fungsionalitas Panitia"
-[fig_panitia_tambah_juri]:      https://i.imgur.com/4NaTDQI.gif "Fungsionalitas Panitia"
-[fig_panitia_tambah_peserta]:   https://i.imgur.com/1S9llbd.gif "Fungsionalitas Panitia"
